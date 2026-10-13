@@ -121,8 +121,8 @@ const tools=[
   opts:[{k:'mode',l:'Mode',type:'select',v:[['each','Every page as separate PDF (ZIP)'],['range','Extract page range into one PDF']]},{k:'range',l:'Page range (e.g. 1-3,5,8-10)',type:'text',ph:'1-3,5'}]},
  {id:'rotate',ic:'🔄',t:'Rotate PDF',d:'Rotate all pages of a PDF.',acc:'.pdf',multi:false,min:1,
   opts:[{k:'deg',l:'Rotate by',type:'select',v:[['90','90° clockwise'],['180','180°'],['270','90° counter-clockwise']]}]},
- {id:'img2pdf',ic:'🖼️',t:'Images to PDF',d:'Turn JPG or PNG images into a single PDF.',acc:'.jpg,.jpeg,.png',multi:true,min:1,
-  opts:[{k:'size',l:'Page size',type:'select',v:[['fit','Same as image'],['a4','A4']]}]},
+ {id:'img2pdf',ic:'🖼️',t:'Images to PDF',d:'Turn JPG or PNG images into a single PDF.',acc:'.jpg,.jpeg,.png,.webp,.heic,.heif',multi:true,min:1,
+  opts:[{k:'size',l:'Page size',type:'select',v:[['a4','A4 (best for documents)'],['fit','Same as image']]},{k:'q',l:'Image quality',type:'select',v:[['std','Standard - smaller file'],['high','High - sharper, bigger file']]}]},
  {id:'pdf2jpg',ic:'📷',t:'PDF to JPG',d:'Convert every PDF page into a JPG image.',acc:'.pdf',multi:false,min:1,
   opts:[{k:'scale',l:'Quality',type:'select',v:[['1.5','Standard'],['2','High'],['1','Small file']]}]},
  {id:'watermark',ic:'💧',t:'Add Watermark',d:'Stamp text across every page.',acc:'.pdf',multi:false,min:1,
@@ -161,7 +161,7 @@ function openTool(id){
   cur=tools.find(t=>t.id===id);files=[];
   $('home').classList.add('hide');$('toolview').classList.remove('hide');
   $('tt').textContent=cur.t;$('td').textContent=cur.d;
-  $('fi').accept=cur.acc;$('fi').multiple=cur.multi;
+  $('fi').accept=cur.id==='img2pdf'?'image/*':cur.acc;$('fi').multiple=cur.multi;
   $('acceptNote').textContent=cur.multi?'You can select multiple files':'Select one file';
   $('opts').innerHTML=cur.opts.map(o=>{
     let inp;
@@ -184,7 +184,7 @@ function addFiles(list){
   const exts=cur.acc.split(',');
   let bad=0;
   for(const f of list){
-    const ok=exts.some(x=>f.name.toLowerCase().endsWith(x));
+    const ok=exts.some(x=>f.name.toLowerCase().endsWith(x))||(cur.id==='img2pdf'&&/^image\//.test(f.type));
     if(!ok){bad++;continue;}
     if(!cur.multi)files=[f];else files.push(f);
   }
@@ -263,16 +263,28 @@ async rotate(){
 },
 async img2pdf(){
   const doc=await PDFDocument.create();
-  for(const f of files){
-    const bytes=await buf(f);const low=f.name.toLowerCase();
-    const img=low.endsWith('.png')?await doc.embedPng(bytes):await doc.embedJpg(bytes);
+  const hi=opt('q')==='high',maxSide=hi?3200:2000,q=hi?0.92:0.85;
+  for(let i=0;i<files.length;i++){
+    const f=files[i];
+    setStatus(`Adding image ${i+1} of ${files.length}...`);
+    const url=URL.createObjectURL(f);const im=new Image();
+    try{im.src=url;await im.decode();}
+    catch(e){URL.revokeObjectURL(url);throw new Error(`Could not open "${f.name}". This browser cannot read this image format. Save or share it as JPG or PNG and try again.`);}
+    let w=im.naturalWidth,h=im.naturalHeight;const s=Math.min(1,maxSide/Math.max(w,h));
+    w=Math.max(1,Math.round(w*s));h=Math.max(1,Math.round(h*s));
+    const c=document.createElement('canvas');c.width=w;c.height=h;
+    const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(im,0,0,w,h);
+    URL.revokeObjectURL(url);
+    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',q));c.width=c.height=0;
+    const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
     if(opt('size')==='a4'){
-      const W=595.28,H=841.89,m=24;const s=Math.min((W-2*m)/img.width,(H-2*m)/img.height,1);
-      const w=img.width*s,h=img.height*s;const pg=doc.addPage([W,H]);
-      pg.drawImage(img,{x:(W-w)/2,y:(H-h)/2,width:w,height:h});
+      const land=img.width>img.height,W=land?841.89:595.28,H=land?595.28:841.89,m=24;
+      const k=Math.min((W-2*m)/img.width,(H-2*m)/img.height);
+      const pw=img.width*k,ph=img.height*k;const pg=doc.addPage([W,H]);
+      pg.drawImage(img,{x:(W-pw)/2,y:(H-ph)/2,width:pw,height:ph});
     }else{
-      const pg=doc.addPage([img.width,img.height]);
-      pg.drawImage(img,{x:0,y:0,width:img.width,height:img.height});
+      const k=72/150,pw=img.width*k,ph=img.height*k;const pg=doc.addPage([pw,ph]);
+      pg.drawImage(img,{x:0,y:0,width:pw,height:ph});
     }
   }
   dl(await doc.save(),'images.pdf',PDF);
