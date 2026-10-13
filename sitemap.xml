@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://janjuapdf.com/guides</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -113,6 +113,26 @@
   <url>
     <loc>https://janjuapdf.com/pdf-to-jpg-vs-png</loc>
     <lastmod>2026-10-11</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://janjuapdf.com/how-to-split-pdf-into-separate-pages</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://janjuapdf.com/how-to-rotate-pdf-pages</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://janjuapdf.com/how-to-add-watermark-to-pdf</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://janjuapdf.com/how-to-add-page-numbers-to-pdf</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
