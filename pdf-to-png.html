@@ -116,7 +116,7 @@ const PDF='application/pdf';
 const tools=[
  {id:'merge',ic:'🔗',t:'Merge PDF',d:'Combine many PDFs into one file, in the order you want.',acc:'.pdf',multi:true,min:2,opts:[]},
  {id:'compress',ic:'📉',t:'Compress PDF',d:'Make a PDF smaller so it is easy to email or upload.',acc:'.pdf',multi:false,min:1,
-  opts:[{k:'mode',l:'Method',type:'select',v:[['strong','Strong - smallest file (pages become images)'],['light','Light - keeps text, small saving']]},{k:'level',l:'Quality (Strong method)',type:'select',v:[['bal','Balanced'],['small','Smallest file'],['best','Best quality']]}]},
+  opts:[{k:'mode',l:'Method',type:'select',v:[['strong','Strong - smallest file (pages become images)'],['light','Light - keeps text, small saving']]},{k:'level',l:'Quality (Strong method)',type:'select',v:[['bal','Balanced'],['small','Smallest file'],['best','Best quality']]},{k:'target',l:'Target size (uses Strong method)',type:'select',v:[['none','No target - use Quality above'],['100','Under 100 KB'],['200','Under 200 KB'],['300','Under 300 KB'],['500','Under 500 KB'],['1024','Under 1 MB'],['2048','Under 2 MB']]}]},
  {id:'split',ic:'✂️',t:'Split PDF',d:'Extract pages or split every page into its own file.',acc:'.pdf',multi:false,min:1,
   opts:[{k:'mode',l:'Mode',type:'select',v:[['each','Every page as separate PDF (ZIP)'],['range','Extract page range into one PDF']]},{k:'range',l:'Page range (e.g. 1-3,5,8-10)',type:'text',ph:'1-3,5'}]},
  {id:'rotate',ic:'🔄',t:'Rotate PDF',d:'Rotate all pages of a PDF.',acc:'.pdf',multi:false,min:1,
@@ -333,31 +333,51 @@ async numbers(){
 async compress(){
   const f=files[0];const bytes=await buf(f);const before=bytes.byteLength;
   const kb=n=>n>=1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB';
-  let out;
-  if(opt('mode')==='light'){
+  const target=opt('target')==='none'?0:(+opt('target'))*1024;
+  if(target&&before<=target)throw new Error('Good news: your PDF is already '+kb(before)+', which is under '+kb(target)+'. You can upload it as it is.');
+  let out,note='';
+  if(!target&&opt('mode')==='light'){
     const doc=await PDFDocument.load(bytes);
     out=await doc.save({useObjectStreams:true});
   }else{
     if(!window.pdfjsLib)throw new Error('PDF engine could not load. Check your internet and refresh.');
-    const L={small:[1,0.55],bal:[1.4,0.7],best:[2,0.82]}[opt('level')]||[1.4,0.7];
     const pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
-    const doc=await PDFDocument.create();
-    for(let i=1;i<=pdf.numPages;i++){
-      setStatus(`Compressing page ${i} of ${pdf.numPages}...`);
-      const page=await pdf.getPage(i);const base=page.getViewport({scale:1});const vp=page.getViewport({scale:L[0]});
-      const c=document.createElement('canvas');c.width=Math.floor(vp.width);c.height=Math.floor(vp.height);
-      const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
-      await page.render({canvasContext:ctx,viewport:vp}).promise;
-      const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',L[1]));
-      const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
-      const pg=doc.addPage([base.width,base.height]);
-      pg.drawImage(img,{x:0,y:0,width:base.width,height:base.height});
+    const make=async(scale,q,label)=>{
+      const doc=await PDFDocument.create();
+      for(let i=1;i<=pdf.numPages;i++){
+        setStatus(`${label}page ${i} of ${pdf.numPages}...`);
+        const page=await pdf.getPage(i);const base=page.getViewport({scale:1});const vp=page.getViewport({scale});
+        const c=document.createElement('canvas');c.width=Math.max(1,Math.floor(vp.width));c.height=Math.max(1,Math.floor(vp.height));
+        const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
+        await page.render({canvasContext:ctx,viewport:vp}).promise;
+        const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',q));c.width=c.height=0;
+        const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+        const pg=doc.addPage([base.width,base.height]);
+        pg.drawImage(img,{x:0,y:0,width:base.width,height:base.height});
+      }
+      return await doc.save({useObjectStreams:true});
+    };
+    if(!target){
+      const L={small:[1,0.55],bal:[1.4,0.7],best:[2,0.82]}[opt('level')]||[1.4,0.7];
+      out=await make(L[0],L[1],'Compressing ');
+    }else{
+      const S=[[2,0.82],[1.6,0.76],[1.4,0.7],[1.2,0.62],[1,0.55],[0.85,0.48],[0.75,0.42]];
+      let best=null,bestI=-1,last=null,tries=0;
+      const first=await make(S[2][0],S[2][1],'Try 1: ');tries=1;
+      if(first.byteLength<=target){
+        best=first;bestI=2;
+        for(let i=1;i>=0;i--){tries++;const r=await make(S[i][0],S[i][1],`Try ${tries}: `);if(r.byteLength<=target){best=r;bestI=i;}else break;}
+      }else{
+        last=first;
+        for(let i=3;i<S.length;i++){tries++;const r=await make(S[i][0],S[i][1],`Try ${tries}: `);last=r;if(r.byteLength<=target){best=r;bestI=i;break;}}
+      }
+      if(best){out=best;note='Target reached: under '+kb(target)+'.'+(bestI>=5?' Please check that small text is still easy to read.':'');}
+      else{out=last;note='We could not get this file under '+kb(target)+'. This is the smallest version we can make while keeping it readable. To go smaller, remove pages you do not need with Delete PDF Pages, or split the file into parts.';}
     }
-    out=await doc.save({useObjectStreams:true});
   }
   if(out.byteLength>=before*0.97)throw new Error('This PDF is already small ('+kb(before)+'). We could not make it smaller. Try the other method.');
   const a=dl(out,baseName(f)+'-compressed.pdf',PDF);
-  const p=document.createElement('p');p.innerHTML='<b>Before:</b> '+kb(before)+' &rarr; <b>After:</b> '+kb(out.byteLength)+' (saved '+Math.round((1-out.byteLength/before)*100)+'%)';
+  const p=document.createElement('p');p.innerHTML='<b>Before:</b> '+kb(before)+' &rarr; <b>After:</b> '+kb(out.byteLength)+' (saved '+Math.round((1-out.byteLength/before)*100)+'%)'+(note?'<br>'+note:'');
   $('res').insertBefore(p,a);
 },
 async delpages(){
@@ -420,7 +440,7 @@ $('go').onclick=async()=>{
   try{await actions[cur.id]();setStatus('Done! Your file is ready below.','ok');}
   catch(e){console.error(e);let m=e.message||String(e);
     if(/encrypt/i.test(m))m='This PDF is password protected. Please unlock it first.';
-    setStatus('Error: '+m,'err');}
+    if(/^Good news/.test(m)){setStatus(m,'ok');}else setStatus('Error: '+m,'err');}
   $('go').disabled=files.length<cur.min;
 };
 
