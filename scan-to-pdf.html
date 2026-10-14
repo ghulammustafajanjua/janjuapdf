@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan to PDF Online Free - Phone Camera Scanner | JanjuaPDF</title>
+<meta name="description" content="Scan documents to PDF with your phone camera for free. Clean black and white pages, no app, no signup, no upload: it runs in your browser.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JanjuaPDF">
+<meta property="og:title" content="Scan to PDF Online Free - Phone Camera Scanner | JanjuaPDF">
+<meta property="og:description" content="Scan documents to PDF with your phone camera for free. Clean black and white pages, no app, no signup, no upload: it runs in your browser.">
+<meta property="og:url" content="https://janjuapdf.com/scan-to-pdf">
+<meta property="og:image" content="https://janjuapdf.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://janjuapdf.com/og-image.png">
+<link rel="canonical" href="https://janjuapdf.com/scan-to-pdf">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1d2433;--mute:#667085;--brand:#e5322d;--brand2:#c42a26;--line:#e4e7ee;--ok:#12805c}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:22px;color:var(--ink);cursor:pointer}
+.logo span{color:var(--brand)}
+.hero{text-align:center;padding:40px 0 18px}
+.hero h1{font-size:clamp(26px,5vw,40px);margin:0 0 8px}
+.hero p{color:var(--mute);margin:0 auto;max-width:620px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;padding:22px 0 40px}
+.tool{text-decoration:none;color:inherit;display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;transition:.15s}
+.tool:hover{box-shadow:0 6px 18px rgba(20,30,60,.1);transform:translateY(-2px)}
+.tool .ic{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.tool .ic svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool h3{margin:8px 0 4px;font-size:17px}
+.tool p{margin:0;color:var(--mute);font-size:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:24px 0}
+.panel h2,.panel h1{margin:0 0 4px}.panel h1{font-size:28px}
+.panel .sub{color:var(--mute);margin:0 0 16px}
+.back{background:none;border:0;color:var(--brand);cursor:pointer;font-size:14px;padding:0;margin-bottom:10px}
+.drop{border:2px dashed #c7cdda;border-radius:12px;padding:30px;text-align:center;background:#fafbff;cursor:pointer}
+.drop.over{border-color:var(--brand);background:#fff4f3}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:11px 20px;font-size:15px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--brand2)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.files{list-style:none;padding:0;margin:14px 0}
+.files li{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;background:#fff;font-size:14px}
+.files li .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files li small{color:var(--mute)}
+.files button{border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;padding:2px 8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+label{font-size:13px;color:var(--mute);display:block;margin-bottom:4px}
+input[type=text],input[type=number],select{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff}
+.status{margin-top:12px;font-size:14px;color:var(--mute)}
+.status.ok{color:var(--ok)}
+.status.err{color:var(--brand)}
+.result{margin-top:14px}
+.result a{display:inline-block;margin:4px 6px 4px 0}
+.result pre{background:#f6f7fb;border:1px solid var(--line);border-radius:8px;padding:12px;max-height:260px;overflow:auto;white-space:pre-wrap;font-size:13px}
+.result img{max-width:130px;border:1px solid var(--line);border-radius:6px;margin:4px}
+.privacy{background:#eefbf5;border:1px solid #bfe9d4;color:#0b5a41;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:14px}
+.seo{background:#fff;border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:14px}
+.seo h2{color:var(--ink);font-size:18px}
+footer{padding:22px 0;text-align:center;color:var(--mute);font-size:13px}
+.hide{display:none}
+.seo h3{font-size:16px;margin:16px 0 2px;color:var(--ink)}.seo ol{padding-left:20px}.more a{display:inline-block;margin:4px 14px 4px 0;color:var(--brand);text-decoration:none;font-weight:600}#flist{display:none}
+.sc-cam{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.sc-cam .btn{font-size:16px;padding:12px 22px}
+.sc-or{color:var(--mute);font-size:14px}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin:12px 0}
+.sc-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
+.sc-th{height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f1f3f7;border-radius:6px}
+.sc-th img{max-width:100%;max-height:140px;transition:transform .2s}
+.sc-bar{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:6px}
+.sc-bar button{border:1px solid var(--line);background:#fff;border-radius:7px;cursor:pointer;font-size:15px;width:30px;height:30px;padding:0}
+.sc-tip{font-size:14px;color:var(--mute)}
+.sc-tip a{color:var(--brand)}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="/" style="text-decoration:none">Janjua<span>PDF</span></a><div style="color:var(--mute);font-size:14px">100% Free &bull; No signup</div></div></header>
+
+<main class="wrap">
+<section id="home" class="hide">
+  <div class="hero"><div></div><p>Merge, split, rotate, watermark and convert PDFs right in your browser. Your files never leave your device.</p></div>
+  <div class="grid" id="grid"><a class="tool" href="/merge-pdf"><div class="ic" style="background:#e5322d"><svg viewBox="0 0 24 24"><path d="M8 3h8l4 4v6M8 3v10M4 9h4M4 9v12h10v-4"/><path d="M14 14h7M18 11l3 3-3 3"/></svg></div><h3>Merge PDF</h3><p>Combine many PDFs into one file, in the order you want.</p></a><a class="tool" href="/compress-pdf"><div class="ic" style="background:#0b7285"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg></div><h3>Compress PDF</h3><p>Make a PDF smaller so it is easy to email or upload.</p></a><a class="tool" href="/sign-pdf"><div class="ic" style="background:#1864ab"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/><path d="M13 20h7"/></svg></div><h3>Sign PDF</h3><p>Draw, type or upload your signature and place it on your PDF.</p></a><a class="tool" href="/edit-pdf"><div class="ic" style="background:#7048e8"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l2-5 7-7 3 3-7 7-5 2z"/><path d="M8 11l3 3"/></svg></div><h3>Edit PDF</h3><p>Add text, white-out boxes and images to your PDF.</p></a><a class="tool" href="/fill-pdf-form"><div class="ic" style="background:#0c8599"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg></div><h3>Fill PDF Form</h3><p>Type into the boxes of a fillable PDF form and save it.</p></a><a class="tool" href="/organize-pdf"><div class="ic" style="background:#087f5b"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/></svg></div><h3>Organize PDF</h3><p>See every page, then drag to reorder, rotate or remove pages.</p></a><a class="tool" href="/protect-pdf"><div class="ic" style="background:#495057"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Protect PDF</h3><p>Add a password so only people who know it can open your PDF.</p></a><a class="tool" href="/unlock-pdf"><div class="ic" style="background:#f59f00"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></div><h3>Unlock PDF</h3><p>Remove the password from your own PDF when you know it.</p></a><a class="tool" href="/split-pdf"><div class="ic" style="background:#f08a24"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8l11 9M8.5 16l11-9"/></svg></div><h3>Split PDF</h3><p>Extract pages or split every page into its own file.</p></a><a class="tool" href="/rotate-pdf"><div class="ic" style="background:#2f80ed"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg></div><h3>Rotate PDF</h3><p>Rotate all pages of a PDF.</p></a><a class="tool" href="/crop-pdf"><div class="ic" style="background:#5c940d"><svg viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></div><h3>Crop PDF</h3><p>Cut away the edges of your PDF pages and keep only the part you need.</p></a><a class="tool" href="/jpg-to-pdf"><div class="ic" style="background:#12a37f"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 9"/></svg></div><h3>Images to PDF</h3><p>Turn JPG or PNG images into a single PDF.</p></a><a class="tool" href="/scan-to-pdf"><div class="ic" style="background:#0b7285"><svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/></svg></div><h3>Scan to PDF</h3><p>Use your phone camera to scan documents into a clean PDF.</p></a><a class="tool" href="/pdf-to-jpg"><div class="ic" style="background:#8e44ad"><svg viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><circle cx="10" cy="14" r="1.4"/><path d="M17 19l-3.5-3.5L8 19"/></svg></div><h3>PDF to JPG</h3><p>Convert every PDF page into a JPG image.</p></a><a class="tool" href="/watermark-pdf"><div class="ic" style="background:#00a6c7"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/></svg></div><h3>Add Watermark</h3><p>Stamp text across every page.</p></a><a class="tool" href="/add-page-numbers-to-pdf"><div class="ic" style="background:#d6336c"><svg viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><path d="M9 13l2-1v6M9 18h4"/></svg></div><h3>Add Page Numbers</h3><p>Number the pages of your PDF.</p></a><a class="tool" href="/delete-pdf-pages"><div class="ic" style="background:#c92a2a"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg></div><h3>Delete PDF Pages</h3><p>Remove the pages you do not need from a PDF.</p></a><a class="tool" href="/reorder-pdf-pages"><div class="ic" style="background:#5f3dc4"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7M18 14l3 3-3 3"/></svg></div><h3>Reorder PDF Pages</h3><p>Change the order of pages or reverse the whole document.</p></a><a class="tool" href="/pdf-to-text"><div class="ic" style="background:#2b8a3e"><svg viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/></svg></div><h3>PDF to Text</h3><p>Extract the text from a PDF and save it as a TXT file.</p></a><a class="tool" href="/pdf-to-png"><div class="ic" style="background:#e67700"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.4"/><path d="M5 18l5-6 3 4 2-2 4 4"/></svg></div><h3>PDF to PNG</h3><p>Convert every PDF page into a sharp PNG image.</p></a></div>
+</section>
+<section id="toolview">
+  <div class="panel">
+    <a class="back" href="/" style="text-decoration:none;display:inline-block">&larr; All tools</a>
+    <h1 id="tt">Scan to PDF</h1><p class="sub" id="td">Use your phone camera to scan documents into a clean PDF.</p>
+    <div class="drop" id="drop"><b>Click to choose files</b> or drag &amp; drop here<br><small id="acceptNote" style="color:var(--mute)"></small></div>
+    <input type="file" id="fi" class="hide" multiple>
+    <ul class="files" id="flist"></ul>
+    <div class="opts" id="opts"></div>
+    <button class="btn" id="go" disabled>Run</button> <button class="btn alt" id="clr">Clear</button>
+    <div class="status" id="st"></div>
+    <div class="result" id="res"></div>
+    <div class="privacy">&#128274; Privacy: everything happens inside your browser. Your files are not uploaded to any server.</div>
+  </div>
+</section>
+</main>
+
+<section class="seo"><div class="wrap">
+<h2>How to scan a document to PDF with your phone</h2>
+<ol><li>Open this page on your phone and tap <b>Take a photo</b>. Photograph your page. Repeat for every page, or choose photos you already took from your gallery.</li><li>Check the pages. Use &#8635; to turn a page, the arrows to change the order and &times; to remove one.</li><li>Choose the look: Document gives a clean black and white scan, Grey is softer, and Colour keeps the original colours.</li><li>Press Scan to PDF and download one PDF with all your pages.</li></ol>
+<h2>Frequently asked questions</h2>
+<h3>Do I need to install an app?</h3><p>No. It works in your phone's browser, on Android and iPhone, and on computers with photos.</p><h3>Are my photos uploaded?</h3><p>No. The cleaning and the PDF are made on your device, so ID cards, certificates and receipts stay private.</p><h3>How do I get the best scan?</h3><p>Use daylight, avoid the flash, put the page on a dark plain table and hold the phone straight above it. Fill the screen with the page.</p><h3>Can I remove the table around the page?</h3><p>Yes. After making the PDF, open it in <a href="/crop-pdf" style="color:#e5322d">Crop PDF</a> and cut away the edges.</p><h3>The PDF is too big to upload. What now?</h3><p>Use <a href="/compress-pdf" style="color:#e5322d">Compress PDF</a> and pick a target size such as under 200 KB.</p>
+<h2>Related guides</h2>
+<p class="more"><a href="/how-to-convert-photos-to-pdf-on-phone">How to Convert Photos to PDF on Your Phone</a><a href="/how-to-compress-pdf-to-100kb">How to Compress a PDF to 100KB or 200KB</a><a href="/guides">All PDF guides</a></p>
+<h2>More free PDF tools</h2>
+<p class="more"><a href="/merge-pdf">Merge PDF</a><a href="/split-pdf">Split PDF</a><a href="/jpg-to-pdf">JPG to PDF</a><a href="/pdf-to-jpg">PDF to JPG</a><a href="/watermark-pdf">Add Watermark to PDF</a><a href="/add-page-numbers-to-pdf">Add Page Numbers to PDF</a><a href="/delete-pdf-pages">Delete PDF Pages</a><a href="/reorder-pdf-pages">Reorder PDF Pages</a><a href="/pdf-to-text">PDF to Text</a><a href="/pdf-to-png">PDF to PNG</a><a href="/compress-pdf">Compress PDF</a><a href="/sign-pdf">Sign PDF</a><a href="/organize-pdf">Organize PDF</a><a href="/protect-pdf">Protect PDF</a><a href="/unlock-pdf">Unlock PDF</a><a href="/edit-pdf">Edit PDF</a><a href="/fill-pdf-form">Fill PDF Form</a><a href="/crop-pdf">Crop PDF</a></p>
+</div></section>
+<footer>&copy; <span id="yr">2026</span> JanjuaPDF &middot; Free PDF tools<br><a href="/about" style="color:inherit">About</a> &middot; <a href="/privacy" style="color:inherit">Privacy Policy</a> &middot; <a href="/terms" style="color:inherit">Terms</a> &middot; <a href="/contact" style="color:inherit">Contact</a> &middot; <a href="/guides" style="color:inherit">Guides</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const {PDFDocument,StandardFonts,rgb,degrees}=PDFLib;
+if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';}
+document.getElementById('yr').textContent=new Date().getFullYear();
+const $=id=>document.getElementById(id);
+let files=[],cur=null;
+
+const PDF='application/pdf';
+const tools=[
+ {id:'merge',ic:'🔗',t:'Merge PDF',d:'Combine many PDFs into one file, in the order you want.',acc:'.pdf',multi:true,min:2,opts:[]},
+ {id:'compress',ic:'📉',t:'Compress PDF',d:'Make a PDF smaller so it is easy to email or upload.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'mode',l:'Method',type:'select',v:[['strong','Strong - smallest file (pages become images)'],['light','Light - keeps text, small saving']]},{k:'level',l:'Quality (Strong method)',type:'select',v:[['bal','Balanced'],['small','Smallest file'],['best','Best quality']]},{k:'target',l:'Target size (uses Strong method)',type:'select',v:[['none','No target - use Quality above'],['100','Under 100 KB'],['200','Under 200 KB'],['300','Under 300 KB'],['500','Under 500 KB'],['1024','Under 1 MB'],['2048','Under 2 MB']]}]},
+ {id:'sign',ic:'✍️',t:'Sign PDF',d:'Draw, type or upload your signature and place it on your PDF.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'edit',ic:'✏️',t:'Edit PDF',d:'Add text, white-out boxes and images to your PDF.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'forms',ic:'📋',t:'Fill PDF Form',d:'Type into the boxes of a fillable PDF form and save it.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'organize',ic:'🗂️',t:'Organize PDF',d:'See every page, then drag to reorder, rotate or remove pages.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'protect',ic:'🔒',t:'Protect PDF',d:'Add a password so only people who know it can open your PDF.',acc:'.pdf',multi:false,min:1,opts:[{k:'pw',l:'Password',type:'password',ph:'At least 4 characters'},{k:'pw2',l:'Type the password again',type:'password',ph:'Same password'},{k:'perm',l:'Protection',type:'select',v:[['open','Password needed to open'],['limit','Password to open + block copying and editing']]}]},
+ {id:'unlock',ic:'🔓',t:'Unlock PDF',d:'Remove the password from your own PDF when you know it.',acc:'.pdf',multi:false,min:1,opts:[{k:'pw',l:'Current password of the PDF',type:'password',ph:'Leave empty if the PDF opens without one'}]},
+ {id:'split',ic:'✂️',t:'Split PDF',d:'Extract pages or split every page into its own file.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'mode',l:'Mode',type:'select',v:[['each','Every page as separate PDF (ZIP)'],['range','Extract page range into one PDF']]},{k:'range',l:'Page range (e.g. 1-3,5,8-10)',type:'text',ph:'1-3,5'}]},
+ {id:'rotate',ic:'🔄',t:'Rotate PDF',d:'Rotate all pages of a PDF.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'deg',l:'Rotate by',type:'select',v:[['90','90° clockwise'],['180','180°'],['270','90° counter-clockwise']]}]},
+ {id:'crop',ic:'',t:'Crop PDF',d:'Cut away the edges of your PDF pages and keep only the part you need.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'scan',ic:'',t:'Scan to PDF',d:'Use your phone camera to scan documents into a clean PDF.',acc:'.jpg,.jpeg,.png,.webp,.heic,.heif',multi:true,min:1,opts:[]},
+ {id:'img2pdf',ic:'🖼️',t:'Images to PDF',d:'Turn JPG or PNG images into a single PDF.',acc:'.jpg,.jpeg,.png,.webp,.heic,.heif',multi:true,min:1,
+  opts:[{k:'size',l:'Page size',type:'select',v:[['a4','A4 (best for documents)'],['fit','Same as image']]},{k:'q',l:'Image quality',type:'select',v:[['std','Standard - smaller file'],['high','High - sharper, bigger file']]}]},
+ {id:'pdf2jpg',ic:'📷',t:'PDF to JPG',d:'Convert every PDF page into a JPG image.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'scale',l:'Quality',type:'select',v:[['1.5','Standard'],['2','High'],['1','Small file']]}]},
+ {id:'watermark',ic:'💧',t:'Add Watermark',d:'Stamp text across every page.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'text',l:'Watermark text',type:'text',ph:'CONFIDENTIAL',def:'CONFIDENTIAL'},{k:'size',l:'Font size',type:'number',def:48},{k:'op',l:'Opacity (0.1 - 1)',type:'number',def:0.25,step:0.05}]},
+ {id:'numbers',ic:'🔢',t:'Add Page Numbers',d:'Number the pages of your PDF.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'pos',l:'Position',type:'select',v:[['bc','Bottom center'],['br','Bottom right'],['bl','Bottom left'],['tc','Top center']]},{k:'start',l:'Start from number',type:'number',def:1}]},
+ {id:'delpages',ic:'🗑️',t:'Delete PDF Pages',d:'Remove the pages you do not need from a PDF.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'range',l:'Pages to delete (e.g. 2,5-7)',type:'text',ph:'2,5-7'}]},
+ {id:'reorder',ic:'🔀',t:'Reorder PDF Pages',d:'Change the order of pages or reverse the whole document.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'mode',l:'Mode',type:'select',v:[['custom','Custom order'],['reverse','Reverse all pages']]},{k:'range',l:'New page order (e.g. 3,1,2 or 2-4,1)',type:'text',ph:'3,1,2'}]},
+ {id:'pdf2text',ic:'📝',t:'PDF to Text',d:'Extract the text from a PDF and save it as a TXT file.',acc:'.pdf',multi:false,min:1,opts:[]},
+ {id:'pdf2png',ic:'🖼',t:'PDF to PNG',d:'Convert every PDF page into a sharp PNG image.',acc:'.pdf',multi:false,min:1,
+  opts:[{k:'scale',l:'Quality',type:'select',v:[['1.5','Standard'],['2','High'],['1','Small file']]}]}
+];
+
+// home grid
+const SLUG={"merge": "merge-pdf", "split": "split-pdf", "rotate": "rotate-pdf", "img2pdf": "jpg-to-pdf", "pdf2jpg": "pdf-to-jpg", "watermark": "watermark-pdf", "numbers": "add-page-numbers-to-pdf", "delpages": "delete-pdf-pages", "reorder": "reorder-pdf-pages", "pdf2text": "pdf-to-text", "pdf2png": "pdf-to-png", "compress": "compress-pdf", "sign": "sign-pdf", "edit": "edit-pdf", "forms": "fill-pdf-form", "organize": "organize-pdf", "protect": "protect-pdf", "unlock": "unlock-pdf", "crop": "crop-pdf", "scan": "scan-to-pdf"};
+const thumbs={
+crop:['#5c940d','<path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/>'],
+scan:['#0b7285','<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/>'],
+merge:['#e5322d','<path d="M8 3h8l4 4v6M8 3v10M4 9h4M4 9v12h10v-4"/><path d="M14 14h7M18 11l3 3-3 3"/>'],
+split:['#f08a24','<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8l11 9M8.5 16l11-9"/>'],
+rotate:['#2f80ed','<path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/>'],
+img2pdf:['#12a37f','<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 9"/>'],
+pdf2jpg:['#8e44ad','<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><circle cx="10" cy="14" r="1.4"/><path d="M17 19l-3.5-3.5L8 19"/>'],
+watermark:['#00a6c7','<path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/>'],
+numbers:['#d6336c','<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><path d="M9 13l2-1v6M9 18h4"/>'],
+compress:['#0b7285','<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>'],
+sign:['#1864ab','<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/><path d="M13 20h7"/>'],
+edit:['#7048e8','<path d="M4 20h16"/><path d="M6 16l2-5 7-7 3 3-7 7-5 2z"/><path d="M8 11l3 3"/>'],
+forms:['#0c8599','<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/>'],
+organize:['#087f5b','<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/>'],
+protect:['#495057','<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'],
+unlock:['#f59f00','<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>'],
+delpages:['#c92a2a','<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/>'],
+reorder:['#5f3dc4','<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7M18 14l3 3-3 3"/>'],
+pdf2text:['#2b8a3e','<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/>'],
+pdf2png:['#e67700','<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.4"/><path d="M5 18l5-6 3 4 2-2 4 4"/>']
+};
+$('grid').innerHTML=tools.map(t=>`<a class="tool" href="/${SLUG[t.id]}"><div class="ic" style="background:${thumbs[t.id][0]}"><svg viewBox="0 0 24 24">${thumbs[t.id][1]}</svg></div><h3>${t.t}</h3><p>${t.d}</p></a>`).join('');
+
+function showHome(){location.href='/';return;$('home').classList.remove('hide');$('toolview').classList.add('hide');cur=null;files=[];window.scrollTo(0,0);}
+function openTool(id){
+  cur=tools.find(t=>t.id===id);files=[];
+  $('home').classList.add('hide');$('toolview').classList.remove('hide');
+  $('tt').textContent=cur.t;$('td').textContent=cur.d;
+  $('fi').accept=(cur.id==='img2pdf'||cur.id==='scan')?'image/*':cur.acc;$('fi').multiple=cur.multi;
+  $('acceptNote').textContent=cur.multi?'You can select multiple files':'Select one file';
+  $('opts').innerHTML=cur.opts.map(o=>{
+    let inp;
+    if(o.type==='select')inp=`<select id="o_${o.k}">${o.v.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('')}</select>`;
+    else inp=`<input id="o_${o.k}" type="${o.type}" placeholder="${o.ph||''}" value="${o.def??''}" ${o.step?`step="${o.step}"`:''}>`;
+    return `<div><label>${o.l}</label>${inp}</div>`;}).join('');
+  if(cur.id==='scan'&&!window._ui_scan){window._ui_scan=1;scInit();}
+  setStatus('');$('res').innerHTML='';renderFiles();window.scrollTo(0,0);
+}
+function setStatus(m,c){const s=$('st');s.textContent=m;s.className='status '+(c||'');}
+function opt(k){return $('o_'+k).value;}
+
+// file handling
+$('drop').onclick=()=>$('fi').click();
+$('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('over');};
+$('drop').ondragleave=()=>$('drop').classList.remove('over');
+$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('over');addFiles(e.dataTransfer.files);};
+$('fi').onchange=e=>{addFiles(e.target.files);e.target.value='';};
+$('clr').onclick=()=>{files=[];$('res').innerHTML='';setStatus('');renderFiles();};
+function addFiles(list){
+  const exts=cur.acc.split(',');
+  let bad=0;
+  for(const f of list){
+    const ok=exts.some(x=>f.name.toLowerCase().endsWith(x))||((cur.id==='img2pdf'||cur.id==='scan')&&/^image\//.test(f.type));
+    if(!ok){bad++;continue;}
+    if(!cur.multi)files=[f];else files.push(f);
+  }
+  if(bad)setStatus(bad+' file(s) skipped: wrong file type.','err');else setStatus('');
+  renderFiles();
+}
+function renderFiles(){
+  $('flist').innerHTML=files.map((f,i)=>`<li><span class="n">${esc(f.name)}</span><small>${(f.size/1024).toFixed(0)} KB</small>
+   ${cur.multi&&files.length>1?`<button onclick="mv(${i},-1)">&uarr;</button><button onclick="mv(${i},1)">&darr;</button>`:''}
+   <button onclick="rm(${i})">&times;</button></li>`).join('');
+  $('go').disabled=files.length<(cur?cur.min:1);
+  $('go').textContent=cur?cur.t.replace(/^Add /,'Add '):'Run';
+  if(cur&&cur.id==='scan'){scGrid();}
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function mv(i,d){const j=i+d;if(j<0||j>=files.length)return;[files[i],files[j]]=[files[j],files[i]];renderFiles();}
+function rm(i){files.splice(i,1);renderFiles();}
+
+// helpers
+const buf=f=>f.arrayBuffer();
+function dl(bytes,name,type){
+  const url=URL.createObjectURL(new Blob([bytes],{type}));
+  const a=document.createElement('a');a.href=url;a.download=name;a.textContent='⬇ Download '+name;a.className='btn';
+  $('res').appendChild(a);return a;
+}
+function parseRange(str,n){
+  const out=[];
+  for(const part of str.split(',')){
+    const p=part.trim();if(!p)continue;
+    const m=p.match(/^(\d+)(?:\s*-\s*(\d+))?$/);
+    if(!m)throw new Error('Invalid page range: "'+p+'"');
+    let a=+m[1],b=m[2]?+m[2]:a;
+    if(a<1||b<a||b>n)throw new Error('Page range '+p+' is outside 1-'+n);
+    for(let i=a;i<=b;i++)out.push(i-1);
+  }
+  if(!out.length)throw new Error('Please enter a page range.');
+  return out;
+}
+const baseName=f=>f.name.replace(/\.[^.]+$/,'');
+
+// actions
+const actions={
+async merge(){
+  const out=await PDFDocument.create();
+  for(const f of files){
+    const src=await PDFDocument.load(await buf(f),{ignoreEncryption:false});
+    const pages=await out.copyPages(src,src.getPageIndices());
+    pages.forEach(p=>out.addPage(p));
+  }
+  dl(await out.save(),'merged.pdf',PDF);
+},
+async split(){
+  const f=files[0];
+  const src=await PDFDocument.load(await buf(f));
+  const n=src.getPageCount();
+  if(opt('mode')==='range'){
+    const idx=parseRange(opt('range'),n);
+    const out=await PDFDocument.create();
+    (await out.copyPages(src,idx)).forEach(p=>out.addPage(p));
+    dl(await out.save(),baseName(f)+'-pages.pdf',PDF);
+  }else{
+    const zip=new JSZip();
+    for(let i=0;i<n;i++){
+      const o=await PDFDocument.create();
+      const [p]=await o.copyPages(src,[i]);o.addPage(p);
+      zip.file(`${baseName(f)}-page-${i+1}.pdf`,await o.save());
+      setStatus(`Splitting page ${i+1} of ${n}...`);
+    }
+    dl(await zip.generateAsync({type:'uint8array'}),baseName(f)+'-split.zip','application/zip');
+  }
+},
+async rotate(){
+  const f=files[0];const doc=await PDFDocument.load(await buf(f));
+  const add=+opt('deg');
+  doc.getPages().forEach(p=>p.setRotation(degrees((p.getRotation().angle+add)%360)));
+  dl(await doc.save(),baseName(f)+'-rotated.pdf',PDF);
+},
+async scan(){await scanApply();},
+async img2pdf(){
+  const doc=await PDFDocument.create();
+  const hi=opt('q')==='high',maxSide=hi?3200:2000,q=hi?0.92:0.85;
+  for(let i=0;i<files.length;i++){
+    const f=files[i];
+    setStatus(`Adding image ${i+1} of ${files.length}...`);
+    const url=URL.createObjectURL(f);const im=new Image();
+    try{im.src=url;await im.decode();}
+    catch(e){URL.revokeObjectURL(url);throw new Error(`Could not open "${f.name}". This browser cannot read this image format. Save or share it as JPG or PNG and try again.`);}
+    let w=im.naturalWidth,h=im.naturalHeight;const s=Math.min(1,maxSide/Math.max(w,h));
+    w=Math.max(1,Math.round(w*s));h=Math.max(1,Math.round(h*s));
+    const c=document.createElement('canvas');c.width=w;c.height=h;
+    const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(im,0,0,w,h);
+    URL.revokeObjectURL(url);
+    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',q));c.width=c.height=0;
+    const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+    if(opt('size')==='a4'){
+      const land=img.width>img.height,W=land?841.89:595.28,H=land?595.28:841.89,m=24;
+      const k=Math.min((W-2*m)/img.width,(H-2*m)/img.height);
+      const pw=img.width*k,ph=img.height*k;const pg=doc.addPage([W,H]);
+      pg.drawImage(img,{x:(W-pw)/2,y:(H-ph)/2,width:pw,height:ph});
+    }else{
+      const k=72/150,pw=img.width*k,ph=img.height*k;const pg=doc.addPage([pw,ph]);
+      pg.drawImage(img,{x:0,y:0,width:pw,height:ph});
+    }
+  }
+  dl(await doc.save(),'images.pdf',PDF);
+},
+async pdf2jpg(){
+  if(!window.pdfjsLib)throw new Error('PDF engine could not load. Check your internet and refresh.');
+  const f=files[0];const pdf=await pdfjsLib.getDocument({data:await buf(f)}).promise;
+  const scale=+opt('scale');const zip=new JSZip();
+  for(let i=1;i<=pdf.numPages;i++){
+    setStatus(`Converting page ${i} of ${pdf.numPages}...`);
+    const page=await pdf.getPage(i);const vp=page.getViewport({scale});
+    const c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;
+    const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
+    await page.render({canvasContext:ctx,viewport:vp}).promise;
+    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',0.92));
+    const ab=new Uint8Array(await blob.arrayBuffer());
+    zip.file(`${baseName(f)}-page-${i}.jpg`,ab);
+    if(i<=4){const im=document.createElement('img');im.src=URL.createObjectURL(blob);$('res').appendChild(im);}
+  }
+  const a=dl(await zip.generateAsync({type:'uint8array'}),baseName(f)+'-images.zip','application/zip');
+  $('res').insertBefore(a,$('res').firstChild);
+},
+async watermark(){
+  const f=files[0];const doc=await PDFDocument.load(await buf(f));
+  const font=await doc.embedFont(StandardFonts.HelveticaBold);
+  const text=(opt('text')||'').trim();if(!text)throw new Error('Please type the watermark text.');
+  const size=Math.max(8,+opt('size')||48);const op=Math.min(1,Math.max(0.05,+opt('op')||0.25));
+  for(const p of doc.getPages()){
+    const {width,height}=p.getSize();const tw=font.widthOfTextAtSize(text,size);
+    const ang=Math.PI/4;
+    p.drawText(text,{x:width/2-(tw/2)*Math.cos(ang),y:height/2-(tw/2)*Math.sin(ang),size,font,color:rgb(0.55,0.55,0.55),opacity:op,rotate:degrees(45)});
+  }
+  dl(await doc.save(),baseName(f)+'-watermarked.pdf',PDF);
+},
+async numbers(){
+  const f=files[0];const doc=await PDFDocument.load(await buf(f));
+  const font=await doc.embedFont(StandardFonts.Helvetica);const start=parseInt(opt('start'))||1;const pos=opt('pos');
+  doc.getPages().forEach((p,i)=>{
+    const {width,height}=p.getSize();const t=String(start+i);const tw=font.widthOfTextAtSize(t,11);
+    let x=(width-tw)/2,y=24;
+    if(pos==='br')x=width-tw-36;if(pos==='bl')x=36;if(pos==='tc')y=height-30;
+    p.drawText(t,{x,y,size:11,font,color:rgb(0.15,0.15,0.15)});
+  });
+  dl(await doc.save(),baseName(f)+'-numbered.pdf',PDF);
+},
+async compress(){
+  const f=files[0];const bytes=await buf(f);const before=bytes.byteLength;
+  const kb=n=>n>=1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB';
+  const target=opt('target')==='none'?0:(+opt('target'))*1024;
+  if(target&&before<=target)throw new Error('Good news: your PDF is already '+kb(before)+', which is under '+kb(target)+'. You can upload it as it is.');
+  let out,note='';
+  if(!target&&opt('mode')==='light'){
+    const doc=await PDFDocument.load(bytes);
+    out=await doc.save({useObjectStreams:true});
+  }else{
+    if(!window.pdfjsLib)throw new Error('PDF engine could not load. Check your internet and refresh.');
+    const pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
+    const make=async(scale,q,label)=>{
+      const doc=await PDFDocument.create();
+      for(let i=1;i<=pdf.numPages;i++){
+        setStatus(`${label}page ${i} of ${pdf.numPages}...`);
+        const page=await pdf.getPage(i);const base=page.getViewport({scale:1});const vp=page.getViewport({scale});
+        const c=document.createElement('canvas');c.width=Math.max(1,Math.floor(vp.width));c.height=Math.max(1,Math.floor(vp.height));
+        const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
+        await page.render({canvasContext:ctx,viewport:vp}).promise;
+        const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',q));c.width=c.height=0;
+        const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+        const pg=doc.addPage([base.width,base.height]);
+        pg.drawImage(img,{x:0,y:0,width:base.width,height:base.height});
+      }
+      return await doc.save({useObjectStreams:true});
+    };
+    if(!target){
+      const L={small:[1,0.55],bal:[1.4,0.7],best:[2,0.82]}[opt('level')]||[1.4,0.7];
+      out=await make(L[0],L[1],'Compressing ');
+    }else{
+      const S=[[2,0.82],[1.6,0.76],[1.4,0.7],[1.2,0.62],[1,0.55],[0.85,0.48],[0.75,0.42]];
+      let best=null,bestI=-1,last=null,tries=0;
+      const first=await make(S[2][0],S[2][1],'Try 1: ');tries=1;
+      if(first.byteLength<=target){
+        best=first;bestI=2;
+        for(let i=1;i>=0;i--){tries++;const r=await make(S[i][0],S[i][1],`Try ${tries}: `);if(r.byteLength<=target){best=r;bestI=i;}else break;}
+      }else{
+        last=first;
+        for(let i=3;i<S.length;i++){tries++;const r=await make(S[i][0],S[i][1],`Try ${tries}: `);last=r;if(r.byteLength<=target){best=r;bestI=i;break;}}
+      }
+      if(best){out=best;note='Target reached: under '+kb(target)+'.'+(bestI>=5?' Please check that small text is still easy to read.':'');}
+      else{out=last;note='We could not get this file under '+kb(target)+'. This is the smallest version we can make while keeping it readable. To go smaller, remove pages you do not need with Delete PDF Pages, or split the file into parts.';}
+    }
+  }
+  if(out.byteLength>=before*0.97)throw new Error('This PDF is already small ('+kb(before)+'). We could not make it smaller. Try the other method.');
+  const a=dl(out,baseName(f)+'-compressed.pdf',PDF);
+  const p=document.createElement('p');p.innerHTML='<b>Before:</b> '+kb(before)+' &rarr; <b>After:</b> '+kb(out.byteLength)+' (saved '+Math.round((1-out.byteLength/before)*100)+'%)'+(note?'<br>'+note:'');
+  $('res').insertBefore(p,a);
+},
+async delpages(){
+  const f=files[0];const doc=await PDFDocument.load(await buf(f));const n=doc.getPageCount();
+  const idx=[...new Set(parseRange(opt('range'),n))];
+  if(idx.length>=n)throw new Error('You cannot delete every page. Keep at least one page.');
+  idx.sort((a,b)=>b-a).forEach(i=>doc.removePage(i));
+  dl(await doc.save(),baseName(f)+'-edited.pdf',PDF);
+},
+async reorder(){
+  const f=files[0];const src=await PDFDocument.load(await buf(f));const n=src.getPageCount();
+  let idx;
+  if(opt('mode')==='reverse'){idx=[];for(let i=n-1;i>=0;i--)idx.push(i);}
+  else idx=parseRange(opt('range'),n);
+  const out=await PDFDocument.create();
+  (await out.copyPages(src,idx)).forEach(p=>out.addPage(p));
+  dl(await out.save(),baseName(f)+'-reordered.pdf',PDF);
+},
+async pdf2text(){
+  if(!window.pdfjsLib)throw new Error('PDF engine could not load. Check your internet and refresh.');
+  const f=files[0];const pdf=await pdfjsLib.getDocument({data:await buf(f)}).promise;
+  let all='';
+  for(let i=1;i<=pdf.numPages;i++){
+    setStatus(`Reading page ${i} of ${pdf.numPages}...`);
+    const tc=await (await pdf.getPage(i)).getTextContent();
+    let line='',lastY=null,pageText='';
+    for(const it of tc.items){
+      const y=it.transform[5];
+      if(lastY!==null&&Math.abs(y-lastY)>3){pageText+=line.trim()+'\n';line='';}
+      line+=it.str+(it.hasEOL?'\n':' ');lastY=y;
+    }
+    pageText+=line.trim();
+    all+=(pdf.numPages>1?`--- Page ${i} ---\n`:'')+pageText+'\n\n';
+  }
+  if(!all.replace(/--- Page \d+ ---/g,'').trim())throw new Error('No text found. This PDF may be a scanned image, so it has no selectable text.');
+  dl(new TextEncoder().encode(all),baseName(f)+'.txt','text/plain');
+  const pre=document.createElement('pre');pre.textContent=all.slice(0,2000)+(all.length>2000?'\n...':'');$('res').appendChild(pre);
+},
+async pdf2png(){
+  if(!window.pdfjsLib)throw new Error('PDF engine could not load. Check your internet and refresh.');
+  const f=files[0];const pdf=await pdfjsLib.getDocument({data:await buf(f)}).promise;
+  const scale=+opt('scale');const zip=new JSZip();
+  for(let i=1;i<=pdf.numPages;i++){
+    setStatus(`Converting page ${i} of ${pdf.numPages}...`);
+    const page=await pdf.getPage(i);const vp=page.getViewport({scale});
+    const c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;
+    const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
+    await page.render({canvasContext:ctx,viewport:vp}).promise;
+    const blob=await new Promise(r=>c.toBlob(r,'image/png'));
+    zip.file(`${baseName(f)}-page-${i}.png`,new Uint8Array(await blob.arrayBuffer()));
+    if(i<=4){const im=document.createElement('img');im.src=URL.createObjectURL(blob);$('res').appendChild(im);}
+  }
+  const a=dl(await zip.generateAsync({type:'uint8array'}),baseName(f)+'-png-images.zip','application/zip');
+  $('res').insertBefore(a,$('res').firstChild);
+}
+};
+
+// ---- Scan to PDF ----
+const SC={rot:new WeakMap(),url:new WeakMap()};
+function scInit(){
+  const cam=document.createElement('div');cam.className='sc-cam';
+  cam.innerHTML=`<button type="button" class="btn" id="sc_cam">&#128247; Take a photo</button><span class="sc-or">or choose photos from your gallery above</span><input type="file" id="sc_camf" accept="image/*" capture="environment" class="hide">`;
+  $('drop').insertAdjacentElement('afterend',cam);
+  $('sc_cam').onclick=()=>$('sc_camf').click();
+  $('sc_camf').onchange=e=>{addFiles(e.target.files);e.target.value='';};
+  const w=document.createElement('div');w.id='scui';$('opts').insertAdjacentElement('afterend',w);
+  w.innerHTML=`<div id="sc_grid" class="sc-grid"></div>
+  <div class="opts"><div><label>Look</label><select id="sc_mode"><option value="doc">Document - clean black and white</option><option value="gray">Grey - soft, good for photos of text</option><option value="color">Colour - keep original colours</option></select></div>
+  <div><label>Page size</label><select id="sc_size"><option value="a4">A4</option><option value="fit">Same as photo</option></select></div></div>
+  <p class="sc-tip">Tip: put the page on a dark table, use daylight, and hold the phone straight above it. After making the PDF you can cut extra edges with <a href="/crop-pdf">Crop PDF</a>.</p>`;
+}
+function scGrid(){
+  const g=$('sc_grid');if(!g)return;
+  g.innerHTML=files.map((f,i)=>{if(!SC.url.has(f))SC.url.set(f,URL.createObjectURL(f));const r=SC.rot.get(f)||0;
+    return `<div class="sc-card"><div class="sc-th"><img src="${SC.url.get(f)}" style="transform:rotate(${r}deg)" alt="Page ${i+1}"></div>
+    <div class="sc-bar"><b>${i+1}</b><button type="button" onclick="scRot(${i})" aria-label="Rotate">&#8635;</button><button type="button" onclick="mv(${i},-1)" aria-label="Move up">&larr;</button><button type="button" onclick="mv(${i},1)" aria-label="Move down">&rarr;</button><button type="button" onclick="rm(${i})" aria-label="Remove">&times;</button></div></div>`;}).join('');
+}
+function scRot(i){const f=files[i];SC.rot.set(f,((SC.rot.get(f)||0)+90)%360);scGrid();}
+function scFilter(ctx,w,h,mode){
+  if(mode==='color')return;
+  const d=ctx.getImageData(0,0,w,h),a=d.data,hist=new Uint32Array(256);
+  for(let i=0;i<a.length;i+=4){const g=(a[i]*299+a[i+1]*587+a[i+2]*114)/1000|0;a[i]=g;hist[g]++;}
+  if(mode==='doc'){const n=w*h;let c=0,lo=0,hi=255;
+    for(let v=0;v<256;v++){c+=hist[v];if(c>=n*0.02){lo=v;break;}}
+    c=0;for(let v=255;v>=0;v--){c+=hist[v];if(c>=n*0.25){hi=v;break;}}
+    if(hi-lo<40){lo=Math.max(0,hi-40);}
+    const k=255/(hi-lo);
+    for(let i=0;i<a.length;i+=4){let v=(a[i]-lo)*k;v=v<0?0:v>255?255:v;if(v>215)v=255;a[i]=a[i+1]=a[i+2]=v;}
+  }else{for(let i=0;i<a.length;i+=4){a[i+1]=a[i+2]=a[i];}}
+  ctx.putImageData(d,0,0);
+}
+async function scanApply(){
+  if(!files.length)throw new Error('Take a photo or choose at least one photo first.');
+  const doc=await PDFDocument.create();const mode=$('sc_mode').value,size=$('sc_size').value;
+  for(let i=0;i<files.length;i++){
+    const f=files[i];setStatus(`Cleaning page ${i+1} of ${files.length}...`);
+    const url=URL.createObjectURL(f);const im=new Image();
+    try{im.src=url;await im.decode();}catch(e){URL.revokeObjectURL(url);throw new Error(`Could not open "${f.name}". Save or share it as JPG or PNG and try again.`);}
+    const r=SC.rot.get(f)||0,sw=im.naturalWidth,sh=im.naturalHeight,k=Math.min(1,2200/Math.max(sw,sh));
+    const w0=Math.round(sw*k),h0=Math.round(sh*k),swap=r%180!==0;
+    const c=document.createElement('canvas');c.width=swap?h0:w0;c.height=swap?w0:h0;const x=c.getContext('2d');
+    x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.translate(c.width/2,c.height/2);x.rotate(r*Math.PI/180);x.drawImage(im,-w0/2,-h0/2,w0,h0);x.setTransform(1,0,0,1,0,0);
+    URL.revokeObjectURL(url);scFilter(x,c.width,c.height,mode);
+    const blob=await new Promise(res=>c.toBlob(res,'image/jpeg',mode==='doc'?0.8:0.85));
+    const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));c.width=c.height=0;
+    if(size==='a4'){const land=img.width>img.height,W=land?841.89:595.28,H=land?595.28:841.89,m=12;
+      const s=Math.min((W-2*m)/img.width,(H-2*m)/img.height);const pw=img.width*s,ph=img.height*s;
+      doc.addPage([W,H]).drawImage(img,{x:(W-pw)/2,y:(H-ph)/2,width:pw,height:ph});}
+    else{const s=72/200,pw=img.width*s,ph=img.height*s;doc.addPage([pw,ph]).drawImage(img,{x:0,y:0,width:pw,height:ph});}
+  }
+  dl(await doc.save(),'scan.pdf',PDF);
+}
+
+$('go').onclick=async()=>{
+  $('go').disabled=true;$('res').innerHTML='';setStatus('Working... please wait.');
+  try{await actions[cur.id]();setStatus('Done! Your file is ready below.','ok');}
+  catch(e){console.error(e);let m=e.message||String(e);
+    if(/encrypt/i.test(m))m='This PDF is password protected. Unlock it first with our free Unlock PDF tool (janjuapdf.com/unlock-pdf).';
+    if(/^Good news/.test(m)){setStatus(m,'ok');}else setStatus('Error: '+m,'err');}
+  $('go').disabled=files.length<cur.min;
+};
+
+openTool('scan');
+</script>
+</body>
+</html>
