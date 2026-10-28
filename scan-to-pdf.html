@@ -80,6 +80,26 @@ footer{padding:22px 0;text-align:center;color:var(--mute);font-size:13px}
 .sc-bar button{border:1px solid var(--line);background:#fff;border-radius:7px;cursor:pointer;font-size:15px;width:30px;height:30px;padding:0}
 .sc-tip{font-size:14px;color:var(--mute)}
 .sc-tip a{color:var(--brand)}
+.sc-crop{display:block;width:100%;margin-top:6px;border:1px solid var(--brand);background:#fff4f3;color:var(--brand);border-radius:7px;cursor:pointer;font-size:14px;font-weight:600;padding:6px 0}
+.sc-cut{position:absolute;top:4px;left:4px;background:var(--brand);color:#fff;font-size:11px;border-radius:5px;padding:1px 6px}
+.sc-th{position:relative}
+#cropbox{position:fixed;inset:0;background:rgba(10,12,20,.92);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 16px;gap:12px}
+#cropbox.hide{display:none}
+#cropbox h3{color:#fff;margin:0;font-size:17px;text-align:center}
+#cropbox .ct{color:#c8ccd6;font-size:13px;margin:-6px 0 0;text-align:center}
+.cr-stage{position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
+.cr-stage canvas{display:block}
+.cr-rect{position:absolute;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(0,0,0,.55);cursor:move;touch-action:none}
+.cr-rect::before,.cr-rect::after{content:"";position:absolute;border:0 dashed rgba(255,255,255,.5);pointer-events:none}
+.cr-rect::before{left:33.3%;right:33.3%;top:0;bottom:0;border-left-width:1px;border-right-width:1px}
+.cr-rect::after{top:33.3%;bottom:33.3%;left:0;right:0;border-top-width:1px;border-bottom-width:1px}
+.cr-h{position:absolute;width:28px;height:28px;background:#fff;border:3px solid var(--brand);border-radius:50%;touch-action:none;z-index:2}
+.cr-h[data-h=nw]{left:-15px;top:-15px;cursor:nwse-resize}.cr-h[data-h=ne]{right:-15px;top:-15px;cursor:nesw-resize}
+.cr-h[data-h=sw]{left:-15px;bottom:-15px;cursor:nesw-resize}.cr-h[data-h=se]{right:-15px;bottom:-15px;cursor:nwse-resize}
+.cr-h[data-h=n]{left:calc(50% - 14px);top:-15px;cursor:ns-resize;border-radius:8px;height:18px;top:-10px}.cr-h[data-h=s]{left:calc(50% - 14px);bottom:-10px;height:18px;cursor:ns-resize;border-radius:8px}
+.cr-h[data-h=w]{top:calc(50% - 14px);left:-10px;width:18px;cursor:ew-resize;border-radius:8px}.cr-h[data-h=e]{top:calc(50% - 14px);right:-10px;width:18px;cursor:ew-resize;border-radius:8px}
+.cr-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.cr-btns .btn.alt{background:#2a2f3c;color:#fff;border-color:#444b5c}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2369534735304653" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
@@ -118,16 +138,21 @@ footer{padding:22px 0;text-align:center;color:var(--mute);font-size:13px}
   </div>
 </section>
 </main>
+<div id="cropbox" class="hide" role="dialog" aria-modal="true" aria-label="Crop photo">
+  <h3 id="cr_title">Crop page</h3><p class="ct">Drag the white corners to the edges of your paper. Drag inside the box to move it.</p>
+  <div class="cr-stage" id="cr_stage"><canvas id="cr_cv"></canvas><div class="cr-rect" id="cr_rect"><i class="cr-h" data-h="nw"></i><i class="cr-h" data-h="ne"></i><i class="cr-h" data-h="sw"></i><i class="cr-h" data-h="se"></i><i class="cr-h" data-h="n"></i><i class="cr-h" data-h="s"></i><i class="cr-h" data-h="w"></i><i class="cr-h" data-h="e"></i></div></div>
+  <div class="cr-btns"><button type="button" class="btn alt" id="cr_rot">&#8635; Rotate</button><button type="button" class="btn alt" id="cr_full">Reset</button><button type="button" class="btn alt" id="cr_cancel">Cancel</button><button type="button" class="btn" id="cr_ok">&#10003; Done</button></div>
+</div>
 
 <section class="seo"><div class="wrap">
 <h2>How to scan a document to PDF with your phone</h2>
-<ol><li>Open this page on your phone and tap <b>Take a photo</b>. Photograph your page. Repeat for every page, or choose photos you already took from your gallery.</li><li>Check the pages. Use &#8635; to turn a page, the arrows to change the order and &times; to remove one.</li><li>Choose the look: Document gives a clean black and white scan, Grey is softer, and Colour keeps the original colours.</li><li>Press Scan to PDF and download one PDF with all your pages.</li></ol>
+<ol><li>Open this page on your phone and tap <b>Take a photo</b>. Photograph your page. Repeat for every page, or choose photos you already took from your gallery.</li><li>Check the pages. Tap <b>&#9986; Crop</b> to cut away the table around the paper (after you take a photo, the crop screen opens by itself). Use &#8635; to turn a page, the arrows to change the order and &times; to remove one.</li><li>Choose the look: Document gives a clean black and white scan, Grey is softer, and Colour keeps the original colours.</li><li>Press Scan to PDF and download one PDF with all your pages.</li></ol>
 <h2>When to use Scan to PDF</h2>
 <p>You do not need a scanner to send a clean copy of a paper document. With your phone camera you can photograph an ID card, a certificate, a signed form or a receipt and turn it into a PDF that looks like it came from an office scanner.</p><p>This is useful for job and visa applications, school admissions and anything else that asks for "scanned copies" of documents.</p>
 <h2>Tips for the best result</h2>
 <ul><li>Use daylight from a window and turn off the flash to avoid shiny spots.</li><li>Put the paper on a dark, plain surface so the page edges are easy to see.</li><li>Choose Document for a clean black and white result, or Colour for ID cards and stamps.</li><li>If the PDF is too big for an upload form, use <a href="/compress-pdf">Compress PDF</a> with a target size.</li></ul>
 <h2>Frequently asked questions</h2>
-<h3>Do I need to install an app?</h3><p>No. It works in your phone's browser, on Android and iPhone, and on computers with photos.</p><h3>Are my photos uploaded?</h3><p>No. The cleaning and the PDF are made on your device, so ID cards, certificates and receipts stay private.</p><h3>How do I get the best scan?</h3><p>Use daylight, avoid the flash, put the page on a dark plain table and hold the phone straight above it. Fill the screen with the page.</p><h3>Can I remove the table around the page?</h3><p>Yes. After making the PDF, open it in <a href="/crop-pdf" style="color:#e5322d">Crop PDF</a> and cut away the edges.</p><h3>The PDF is too big to upload. What now?</h3><p>Use <a href="/compress-pdf" style="color:#e5322d">Compress PDF</a> and pick a target size such as under 200 KB.</p>
+<h3>Do I need to install an app?</h3><p>No. It works in your phone's browser, on Android and iPhone, and on computers with photos.</p><h3>Are my photos uploaded?</h3><p>No. The cleaning and the PDF are made on your device, so ID cards, certificates and receipts stay private.</p><h3>How do I get the best scan?</h3><p>Use daylight, avoid the flash, put the page on a dark plain table and hold the phone straight above it. Fill the screen with the page.</p><h3>Can I remove the table around the page?</h3><p>Yes. Tap <b>Crop</b> under any page and drag the white corners to the edges of your paper, then tap Done. The crop is applied when the PDF is made. You can also crop a finished PDF with <a href="/crop-pdf" style="color:#e5322d">Crop PDF</a>.</p><h3>The PDF is too big to upload. What now?</h3><p>Use <a href="/compress-pdf" style="color:#e5322d">Compress PDF</a> and pick a target size such as under 200 KB.</p>
 <h2>Related guides</h2>
 <p class="more"><a href="/how-to-convert-photos-to-pdf-on-phone">How to Convert Photos to PDF on Your Phone</a><a href="/how-to-compress-pdf-to-100kb">How to Compress a PDF to 100KB or 200KB</a><a href="/guides">All PDF guides</a></p>
 <h2>More free PDF tools</h2>
@@ -512,26 +537,86 @@ async pdf2png(){
 };
 
 // ---- Scan to PDF ----
-const SC={rot:new WeakMap(),url:new WeakMap()};
+const SC={rot:new WeakMap(),url:new WeakMap(),crop:new WeakMap(),thumb:new WeakMap()};
 function scInit(){
   const cam=document.createElement('div');cam.className='sc-cam';
   cam.innerHTML=`<button type="button" class="btn" id="sc_cam">&#128247; Take a photo</button><span class="sc-or">or choose photos from your gallery above</span><input type="file" id="sc_camf" accept="image/*" capture="environment" class="hide">`;
   $('drop').insertAdjacentElement('afterend',cam);
   $('sc_cam').onclick=()=>$('sc_camf').click();
-  $('sc_camf').onchange=e=>{addFiles(e.target.files);e.target.value='';};
+  $('sc_camf').onchange=e=>{const n=files.length;addFiles(e.target.files);e.target.value='';if(files.length>n)crOpen(files.length-1);};
   const w=document.createElement('div');w.id='scui';$('opts').insertAdjacentElement('afterend',w);
   w.innerHTML=`<div id="sc_grid" class="sc-grid"></div>
   <div class="opts"><div><label>Look</label><select id="sc_mode"><option value="doc">Document - clean black and white</option><option value="gray">Grey - soft, good for photos of text</option><option value="color">Colour - keep original colours</option></select></div>
   <div><label>Page size</label><select id="sc_size"><option value="a4">A4</option><option value="fit">Same as photo</option></select></div></div>
-  <p class="sc-tip">Tip: put the page on a dark table, use daylight, and hold the phone straight above it. After making the PDF you can cut extra edges with <a href="/crop-pdf">Crop PDF</a>.</p>`;
+  <p class="sc-tip">Tip: put the page on a dark table, use daylight, and hold the phone straight above it. Tap <b>&#9986; Crop</b> on any page to cut away the table around the paper.</p>`;
 }
 function scGrid(){
   const g=$('sc_grid');if(!g)return;
-  g.innerHTML=files.map((f,i)=>{if(!SC.url.has(f))SC.url.set(f,URL.createObjectURL(f));const r=SC.rot.get(f)||0;
-    return `<div class="sc-card"><div class="sc-th"><img src="${SC.url.get(f)}" style="transform:rotate(${r}deg)" alt="Page ${i+1}"></div>
-    <div class="sc-bar"><b>${i+1}</b><button type="button" onclick="scRot(${i})" aria-label="Rotate">&#8635;</button><button type="button" onclick="mv(${i},-1)" aria-label="Move up">&larr;</button><button type="button" onclick="mv(${i},1)" aria-label="Move down">&rarr;</button><button type="button" onclick="rm(${i})" aria-label="Remove">&times;</button></div></div>`;}).join('');
+  g.innerHTML=files.map((f,i)=>{if(!SC.url.has(f))SC.url.set(f,URL.createObjectURL(f));const r=SC.rot.get(f)||0,t=SC.thumb.get(f);
+    return `<div class="sc-card"><div class="sc-th">${t?`<img src="${t}" alt="Page ${i+1}"><span class="sc-cut">Cropped</span>`:`<img src="${SC.url.get(f)}" style="transform:rotate(${r}deg)" alt="Page ${i+1}">`}</div>
+    <div class="sc-bar"><b>${i+1}</b><button type="button" onclick="scRot(${i})" aria-label="Rotate">&#8635;</button><button type="button" onclick="mv(${i},-1)" aria-label="Move up">&larr;</button><button type="button" onclick="mv(${i},1)" aria-label="Move down">&rarr;</button><button type="button" onclick="rm(${i})" aria-label="Remove">&times;</button></div><button type="button" class="sc-crop" onclick="crOpen(${i})">&#9986; Crop</button></div>`;}).join('');
 }
-function scRot(i){const f=files[i];SC.rot.set(f,((SC.rot.get(f)||0)+90)%360);scGrid();}
+function scRot(i){const f=files[i];SC.rot.set(f,((SC.rot.get(f)||0)+90)%360);const c=SC.crop.get(f);
+  if(c){SC.crop.set(f,crTurn(c));scThumb(f);}else scGrid();}
+// crop box is stored as fractions (0-1) of the turned photo; turning 90deg clockwise moves it like this
+function crTurn(c){return {x:1-(c.y+c.h),y:c.x,w:c.h,h:c.w};}
+async function scLoad(f){const url=URL.createObjectURL(f);const im=new Image();
+  try{im.src=url;await im.decode();}catch(e){URL.revokeObjectURL(url);throw new Error(`Could not open "${f.name}". Save or share it as JPG or PNG and try again.`);}
+  URL.revokeObjectURL(url);return im;}
+// draw photo turned by r degrees, longest side at most max pixels
+function scTurned(im,r,max){const sw=im.naturalWidth,sh=im.naturalHeight,k=Math.min(1,max/Math.max(sw,sh));
+  const w0=Math.round(sw*k),h0=Math.round(sh*k),swap=r%180!==0;
+  const c=document.createElement('canvas');c.width=swap?h0:w0;c.height=swap?w0:h0;const x=c.getContext('2d');
+  x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.translate(c.width/2,c.height/2);x.rotate(r*Math.PI/180);x.drawImage(im,-w0/2,-h0/2,w0,h0);x.setTransform(1,0,0,1,0,0);
+  return c;}
+function scCut(c,cr){if(!cr)return c;const sx=Math.round(cr.x*c.width),sy=Math.round(cr.y*c.height);
+  const w=Math.max(1,Math.round(cr.w*c.width)),h=Math.max(1,Math.round(cr.h*c.height));
+  const o=document.createElement('canvas');o.width=w;o.height=h;o.getContext('2d').drawImage(c,sx,sy,w,h,0,0,w,h);c.width=c.height=0;return o;}
+async function scThumb(f){const cr=SC.crop.get(f);
+  if(!cr){SC.thumb.delete(f);scGrid();return;}
+  try{const im=await scLoad(f);const c=scCut(scTurned(im,SC.rot.get(f)||0,400),cr);SC.thumb.set(f,c.toDataURL('image/jpeg',0.8));c.width=c.height=0;}catch(e){}
+  scGrid();}
+
+// ---- Crop editor ----
+const CR={f:null,im:null,r:0,W:0,H:0,b:null,drag:null};
+async function crOpen(i){const f=files[i];if(!f)return;
+  try{CR.im=await scLoad(f);}catch(e){setStatus(e.message,'err');return;}
+  CR.f=f;CR.r=SC.rot.get(f)||0;$('cr_title').textContent='Crop page '+(i+1);
+  $('cropbox').classList.remove('hide');document.body.style.overflow='hidden';
+  crDraw(SC.crop.get(f)||null);}
+function crDraw(cr){
+  const c=scTurned(CR.im,CR.r,1400),cv=$('cr_cv');
+  cv.width=c.width;cv.height=c.height;cv.getContext('2d').drawImage(c,0,0);c.width=c.height=0;
+  const maxW=Math.min(window.innerWidth-40,900),maxH=window.innerHeight-190,k=Math.min(maxW/cv.width,maxH/cv.height);
+  CR.W=Math.round(cv.width*k);CR.H=Math.round(cv.height*k);cv.style.width=CR.W+'px';cv.style.height=CR.H+'px';
+  const m=cr?null:Math.round(Math.min(CR.W,CR.H)*0.04);
+  CR.b=cr?{x:cr.x*CR.W,y:cr.y*CR.H,w:cr.w*CR.W,h:cr.h*CR.H}:{x:m,y:m,w:CR.W-2*m,h:CR.H-2*m};
+  crPaint();}
+function crPaint(){const b=CR.b,s=$('cr_rect').style;s.left=b.x+'px';s.top=b.y+'px';s.width=b.w+'px';s.height=b.h+'px';}
+function crClose(){$('cropbox').classList.add('hide');document.body.style.overflow='';CR.im=null;CR.f=null;const cv=$('cr_cv');cv.width=cv.height=0;}
+$('cr_rect').addEventListener('pointerdown',e=>{e.preventDefault();
+  CR.drag={h:e.target.dataset.h||'move',x:e.clientX,y:e.clientY,b:{...CR.b},id:e.pointerId};
+  $('cr_rect').setPointerCapture(e.pointerId);});
+$('cr_rect').addEventListener('pointermove',e=>{const d=CR.drag;if(!d||d.id!==e.pointerId)return;e.preventDefault();
+  const dx=e.clientX-d.x,dy=e.clientY-d.y,o=d.b,MIN=40,W=CR.W,H=CR.H;
+  let L=o.x,T=o.y,R=o.x+o.w,B=o.y+o.h;
+  if(d.h==='move'){L=Math.min(Math.max(0,o.x+dx),W-o.w);T=Math.min(Math.max(0,o.y+dy),H-o.h);R=L+o.w;B=T+o.h;}
+  else{if(/w/.test(d.h))L=Math.min(Math.max(0,o.x+dx),R-MIN);
+    if(/e/.test(d.h))R=Math.max(Math.min(W,R+dx),L+MIN);
+    if(/n/.test(d.h))T=Math.min(Math.max(0,o.y+dy),B-MIN);
+    if(/s/.test(d.h))B=Math.max(Math.min(H,B+dy),T+MIN);}
+  CR.b={x:L,y:T,w:R-L,h:B-T};crPaint();});
+['pointerup','pointercancel'].forEach(t=>$('cr_rect').addEventListener(t,()=>{CR.drag=null;}));
+$('cr_full').onclick=()=>{CR.b={x:0,y:0,w:CR.W,h:CR.H};crPaint();};
+$('cr_rot').onclick=()=>{const b=CR.b,cr={x:b.x/CR.W,y:b.y/CR.H,w:b.w/CR.W,h:b.h/CR.H};CR.r=(CR.r+90)%360;crDraw(crTurn(cr));};
+$('cr_cancel').onclick=crClose;
+$('cr_ok').onclick=()=>{const f=CR.f;if(!f)return crClose();const b=CR.b;
+  const cr={x:b.x/CR.W,y:b.y/CR.H,w:b.w/CR.W,h:b.h/CR.H};
+  SC.rot.set(f,CR.r);
+  if(cr.x<0.005&&cr.y<0.005&&cr.w>0.99&&cr.h>0.99)SC.crop.delete(f);else SC.crop.set(f,cr);
+  crClose();scThumb(f);};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cropbox').classList.contains('hide'))crClose();});
+window.addEventListener('resize',()=>{if(CR.im&&CR.b){const b=CR.b;crDraw({x:b.x/CR.W,y:b.y/CR.H,w:b.w/CR.W,h:b.h/CR.H});}});
 function scFilter(ctx,w,h,mode){
   if(mode==='color')return;
   const d=ctx.getImageData(0,0,w,h),a=d.data,hist=new Uint32Array(256);
@@ -550,13 +635,9 @@ async function scanApply(){
   const doc=await PDFDocument.create();const mode=$('sc_mode').value,size=$('sc_size').value;
   for(let i=0;i<files.length;i++){
     const f=files[i];setStatus(`Cleaning page ${i+1} of ${files.length}...`);
-    const url=URL.createObjectURL(f);const im=new Image();
-    try{im.src=url;await im.decode();}catch(e){URL.revokeObjectURL(url);throw new Error(`Could not open "${f.name}". Save or share it as JPG or PNG and try again.`);}
-    const r=SC.rot.get(f)||0,sw=im.naturalWidth,sh=im.naturalHeight,k=Math.min(1,2200/Math.max(sw,sh));
-    const w0=Math.round(sw*k),h0=Math.round(sh*k),swap=r%180!==0;
-    const c=document.createElement('canvas');c.width=swap?h0:w0;c.height=swap?w0:h0;const x=c.getContext('2d');
-    x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.translate(c.width/2,c.height/2);x.rotate(r*Math.PI/180);x.drawImage(im,-w0/2,-h0/2,w0,h0);x.setTransform(1,0,0,1,0,0);
-    URL.revokeObjectURL(url);scFilter(x,c.width,c.height,mode);
+    const im=await scLoad(f);const cr=SC.crop.get(f);
+    const c=scCut(scTurned(im,SC.rot.get(f)||0,cr?3000:2200),cr);const x=c.getContext('2d');
+    scFilter(x,c.width,c.height,mode);
     const blob=await new Promise(res=>c.toBlob(res,'image/jpeg',mode==='doc'?0.8:0.85));
     const img=await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));c.width=c.height=0;
     if(size==='a4'){const land=img.width>img.height,W=land?841.89:595.28,H=land?595.28:841.89,m=12;
