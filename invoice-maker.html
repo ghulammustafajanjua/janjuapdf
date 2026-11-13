@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Invoice Maker - Create an Invoice PDF Online | JanjuaPDF</title>
+<meta name="description" content="Make a professional invoice or quotation and download it as a PDF for free. Add items, tax, discount and your logo. No signup, no watermark.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JanjuaPDF">
+<meta property="og:title" content="Free Invoice Maker - Create an Invoice PDF Online | JanjuaPDF">
+<meta property="og:description" content="Make a professional invoice or quotation and download it as a PDF for free. Add items, tax, discount and your logo. No signup, no watermark.">
+<meta property="og:url" content="https://janjuapdf.com/invoice-maker">
+<meta property="og:image" content="https://janjuapdf.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://janjuapdf.com/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Invoice Maker", "url": "https://janjuapdf.com/invoice-maker", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (works in the browser)", "description": "Make a professional invoice or quotation and download it as a PDF for free. Add items, tax, discount and your logo. No signup, no watermark.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this invoice maker really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can make as many invoices as you want, with no signup and no watermark on the PDF."}}, {"@type": "Question", "name": "Can I write the invoice in Urdu or Arabic?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you use Urdu, Arabic or other special letters, the invoice is drawn as an image so the letters look right. In English, the text in the PDF can also be selected and copied."}}, {"@type": "Question", "name": "Which currencies can I use?", "acceptedAnswer": {"@type": "Answer", "text": "You can choose AED, PKR, USD, EUR, GBP, SAR, INR, QAR, KWD, OMR or BHD, or type any other currency code. Amounts in KWD, OMR and BHD use three decimal places."}}, {"@type": "Question", "name": "Are my business details saved?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you leave \"Remember my business details\" ticked. They are saved in this browser on your own device, not on our server, and you can untick the box to forget them."}}, {"@type": "Question", "name": "Is my information uploaded?", "acceptedAnswer": {"@type": "Answer", "text": "No. The invoice is created in your browser on your own device, so your customer details and prices never leave your phone or computer."}}]}</script>
+<link rel="canonical" href="https://janjuapdf.com/invoice-maker">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1d2433;--mute:#667085;--brand:#e5322d;--brand2:#c42a26;--line:#e4e7ee;--ok:#12805c}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:22px;color:var(--ink);cursor:pointer}
+.logo span{color:var(--brand)}
+.hero{text-align:center;padding:40px 0 18px}
+.hero h1{font-size:clamp(26px,5vw,40px);margin:0 0 8px}
+.hero p{color:var(--mute);margin:0 auto;max-width:620px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;padding:22px 0 40px}
+.tool{text-decoration:none;color:inherit;display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;transition:.15s}
+.tool:hover{box-shadow:0 6px 18px rgba(20,30,60,.1);transform:translateY(-2px)}
+.tool .ic{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.tool .ic svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool h3{margin:8px 0 4px;font-size:17px}
+.tool p{margin:0;color:var(--mute);font-size:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:24px 0}
+.panel h2,.panel h1{margin:0 0 4px}.panel h1{font-size:28px}
+.panel .sub{color:var(--mute);margin:0 0 16px}
+.back{background:none;border:0;color:var(--brand);cursor:pointer;font-size:14px;padding:0;margin-bottom:10px}
+.drop{border:2px dashed #c7cdda;border-radius:12px;padding:30px;text-align:center;background:#fafbff;cursor:pointer}
+.drop.over{border-color:var(--brand);background:#fff4f3}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:11px 20px;font-size:15px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--brand2)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.files{list-style:none;padding:0;margin:14px 0}
+.files li{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;background:#fff;font-size:14px}
+.files li .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files li small{color:var(--mute)}
+.files button{border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;padding:2px 8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+label{font-size:13px;color:var(--mute);display:block;margin-bottom:4px}
+input[type=text],input[type=number],select{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff}
+.status{margin-top:12px;font-size:14px;color:var(--mute)}
+.status.ok{color:var(--ok)}
+.status.err{color:var(--brand)}
+.result{margin-top:14px}
+.result a{display:inline-block;margin:4px 6px 4px 0}
+.result pre{background:#f6f7fb;border:1px solid var(--line);border-radius:8px;padding:12px;max-height:260px;overflow:auto;white-space:pre-wrap;font-size:13px}
+.result img{max-width:130px;border:1px solid var(--line);border-radius:6px;margin:4px}
+.privacy{background:#eefbf5;border:1px solid #bfe9d4;color:#0b5a41;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:14px}
+.seo{background:#fff;border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:14px}
+.seo h2{color:var(--ink);font-size:18px}
+footer{padding:22px 0;text-align:center;color:var(--mute);font-size:13px}
+.hide{display:none}
+.seo h3{font-size:16px;margin:16px 0 2px;color:var(--ink)}.seo ol{padding-left:20px}
+.seo ul{padding-left:20px}
+.seo li{margin:4px 0}
+.seo p a,.seo li a{color:var(--brand);font-weight:600}
+.more a{display:inline-block;margin:4px 14px 4px 0;color:var(--brand);text-decoration:none;font-weight:600}.iv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.iv-grid>*,.iv-two>*,.iv-row>*{min-width:0}
+.iv-box input,.iv-box select,.iv-box textarea{max-width:100%;min-width:0}
+.iv-box{border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff}
+.iv-box label{margin-top:8px}
+.iv-h{font-size:16px;margin:0 0 4px}
+.iv-box textarea,.iv-box input[type=date]{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff;font-family:inherit}
+.iv-box textarea{resize:vertical}
+.iv-box input[type=file]{font-size:13px;max-width:100%}
+.iv-two{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.iv-row{display:grid;grid-template-columns:1fr 72px 104px 110px 34px;gap:6px;align-items:center;margin-bottom:6px}
+.iv-row input{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff}
+.iv-head span{font-size:12px;color:var(--mute);font-weight:600}
+.iv-r,.iv-row .amt{text-align:right}
+.iv-row .amt{font-size:14px;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.iv-row button{border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;height:36px;font-size:16px}
+.iv-tot table{width:100%;border-collapse:collapse}
+.iv-tot td{padding:6px 0;font-size:14px}
+.iv-tot td+td{text-align:right;font-variant-numeric:tabular-nums}
+.iv-tot tr.t td{font-weight:800;font-size:17px;border-top:2px solid var(--ink);padding-top:9px}
+.iv-check{display:flex;gap:8px;align-items:center;margin:14px 0;font-size:14px;color:var(--ink)}
+.iv-small{font-size:12px;color:var(--mute);margin:4px 0 0}
+.iv-link{background:none;border:0;color:var(--brand);cursor:pointer;padding:0;font-size:12px}
+@media(max-width:640px){.iv-grid{grid-template-columns:1fr}.iv-row{grid-template-columns:1fr 1fr 1fr 34px;padding-bottom:8px;border-bottom:1px solid var(--line)}.iv-row .d{grid-column:1/-1}.iv-head{display:none}}</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2369534735304653" crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PJ88WKFD40"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PJ88WKFD40');
+</script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#e5322d">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="/" style="text-decoration:none">Janjua<span>PDF</span></a><div style="color:var(--mute);font-size:14px">100% Free &bull; No signup</div></div></header>
+
+<main class="wrap">
+<section id="toolview">
+  <div class="panel">
+    <a class="back" href="/" style="text-decoration:none;display:inline-block">&larr; All tools</a>
+    <h1>Invoice Maker</h1><p class="sub">Fill in the form and download a professional invoice as a PDF. Free, no signup, no watermark.</p>
+    <div class="iv-grid">
+      <div class="iv-box">
+        <h2 class="iv-h">From (your business)</h2>
+        <label for="fromName">Business or your name</label><input type="text" id="fromName" maxlength="100" placeholder="e.g. Janjua Tailors">
+        <label for="fromInfo">Address, phone, email</label><textarea id="fromInfo" rows="3" dir="auto" maxlength="400" placeholder="Shop 4, Main Road&#10;+971 50 000 0000&#10;you@example.com"></textarea>
+        <label for="fromTax">Tax number (optional)</label><input type="text" id="fromTax" maxlength="60" placeholder="e.g. TRN or NTN">
+        <label for="logo">Logo (optional)</label><input type="file" id="logo" accept="image/png,image/jpeg,image/webp">
+        <p class="iv-small"><span id="logoName">No logo</span> <button type="button" class="iv-link hide" id="logoRm">Remove logo</button></p>
+      </div>
+      <div class="iv-box">
+        <h2 class="iv-h">Bill to (customer)</h2>
+        <label for="toName">Customer name</label><input type="text" id="toName" maxlength="100" placeholder="e.g. Ali Traders">
+        <label for="toInfo">Customer address, phone, email</label><textarea id="toInfo" rows="3" dir="auto" maxlength="400"></textarea>
+        <div class="iv-two">
+          <div><label for="title">Document title</label><select id="title"><option>INVOICE</option><option>TAX INVOICE</option><option>QUOTATION</option></select></div>
+          <div><label for="num">Number</label><input type="text" id="num" maxlength="40" value="INV-0001"></div>
+          <div><label for="date">Date</label><input type="date" id="date"></div>
+          <div><label for="due">Due date (optional)</label><input type="date" id="due"></div>
+        </div>
+      </div>
+    </div>
+    <h2 class="iv-h" style="margin-top:18px">Items</h2>
+    <div class="iv-row iv-head" aria-hidden="true"><span>Description</span><span>Qty</span><span>Price</span><span class="iv-r">Amount</span><span></span></div>
+    <div id="items"></div>
+    <button type="button" class="btn alt" id="addItem" style="margin-top:6px">+ Add item</button>
+    <div class="iv-grid" style="margin-top:14px">
+      <div class="iv-box">
+        <div class="iv-two">
+          <div><label for="cur">Currency</label><select id="cur"><option>AED</option><option>PKR</option><option>USD</option><option>EUR</option><option>GBP</option><option>SAR</option><option>INR</option><option>QAR</option><option>KWD</option><option>OMR</option><option>BHD</option><option value="other">Other</option></select></div>
+          <div id="curOtherBox" class="hide"><label for="curOther">Currency code</label><input type="text" id="curOther" maxlength="5" placeholder="e.g. CAD"></div>
+          <div><label for="taxRate">Tax / VAT %</label><input type="number" id="taxRate" min="0" max="100" step="0.01" value="0" inputmode="decimal"></div>
+          <div><label for="disc">Discount (amount)</label><input type="number" id="disc" min="0" step="0.01" value="0" inputmode="decimal"></div>
+        </div>
+        <label for="notes">Notes or payment details (optional)</label><textarea id="notes" rows="3" dir="auto" maxlength="800" placeholder="e.g. Bank: ... IBAN: ...&#10;Thank you for your business!"></textarea>
+      </div>
+      <div class="iv-box iv-tot" id="totals"></div>
+    </div>
+    <label class="iv-check"><input type="checkbox" id="remember" checked> Remember my business details, currency and notes on this device</label>
+    <button class="btn" id="go">Create Invoice PDF</button> <button class="btn alt" id="clr">Clear form</button>
+    <div class="status" id="st" role="status" aria-live="polite"></div>
+    <div class="result" id="res"></div>
+    <div class="privacy">&#128274; Privacy: the invoice is made inside your browser. Nothing you type is uploaded to any server.</div>
+  </div>
+</section>
+</main>
+
+<section class="seo"><div class="wrap">
+<h2>How to use Invoice Maker</h2>
+<ol><li>Fill in your business details and your customer's details. You can add a logo if you have one.</li><li>Add each item or service with its quantity and price. The amounts and the total are worked out for you.</li><li>Choose the currency, add tax or a discount if needed, write your payment details in the notes, then press Create Invoice PDF and download the file.</li></ol>
+<h2>When to use Invoice Maker</h2>
+<p>Freelancers, small shops, tailors, tutors, delivery riders and home businesses often need to send a bill but do not have accounting software. A clear invoice shows your customer exactly what they are paying for and when to pay, and it looks more professional than a message on WhatsApp.</p><p>The PDF works on every phone and computer, so you can send it by email or WhatsApp, or print it. You can also choose Quotation to send a price offer before the work starts.</p>
+<h2>Tips for a good invoice</h2>
+<ul><li>Give every invoice its own number, for example INV-0001, INV-0002, so you can find it later.</li><li>Write a due date and your payment details, such as bank name and IBAN, in the notes so the customer knows how and when to pay.</li><li>Keep a copy of every invoice you send.</li><li>Check your local tax rules for what a tax invoice must show. This tool lets you add a tax number and a tax rate, but it does not give tax advice.</li><li>Need to add a receipt photo or another file? Use <a href="/combine-files-to-pdf">Combine Files to PDF</a>.</li></ul>
+<h2>Frequently asked questions</h2>
+<h3>Is this invoice maker really free?</h3><p>Yes. You can make as many invoices as you want, with no signup and no watermark on the PDF.</p>
+<h3>Can I write the invoice in Urdu or Arabic?</h3><p>Yes. If you use Urdu, Arabic or other special letters, the invoice is drawn as an image so the letters look right. In English, the text in the PDF can also be selected and copied.</p>
+<h3>Which currencies can I use?</h3><p>You can choose AED, PKR, USD, EUR, GBP, SAR, INR, QAR, KWD, OMR or BHD, or type any other currency code. Amounts in KWD, OMR and BHD use three decimal places.</p>
+<h3>Are my business details saved?</h3><p>Only if you leave "Remember my business details" ticked. They are saved in this browser on your own device, not on our server, and you can untick the box to forget them.</p>
+<h3>Is my information uploaded?</h3><p>No. The invoice is created in your browser on your own device, so your customer details and prices never leave your phone or computer.</p>
+<h2>Related guides</h2>
+<p class="more"><a href="/how-to-sign-a-pdf-on-your-phone">How to Sign a PDF on Your Phone (Free, No App)</a><a href="/how-to-password-protect-a-pdf">How to Password Protect a PDF</a><a href="/guides">All PDF guides</a></p>
+<h2>More free tools</h2>
+<p class="more"><a href="/jpg-to-pdf">JPG to PDF</a><a href="/merge-pdf">Merge PDF</a><a href="/split-pdf">Split PDF</a><a href="/rotate-pdf">Rotate PDF</a><a href="/pdf-to-jpg">PDF to JPG</a><a href="/watermark-pdf">Add Watermark to PDF</a><a href="/add-page-numbers-to-pdf">Add Page Numbers to PDF</a><a href="/delete-pdf-pages">Delete PDF Pages</a><a href="/reorder-pdf-pages">Reorder PDF Pages</a><a href="/pdf-to-text">PDF to Text</a><a href="/pdf-to-png">PDF to PNG</a><a href="/compress-pdf">Compress PDF</a><a href="/sign-pdf">Sign PDF</a><a href="/organize-pdf">Organize PDF</a><a href="/protect-pdf">Protect PDF</a><a href="/unlock-pdf">Unlock PDF</a><a href="/edit-pdf">Edit PDF</a><a href="/fill-pdf-form">Fill PDF Form</a><a href="/crop-pdf">Crop PDF</a><a href="/scan-to-pdf">Scan to PDF</a><a href="/redact-pdf">Redact PDF</a><a href="/ocr-pdf">OCR PDF</a><a href="/pdf-to-powerpoint">PDF to PowerPoint</a><a href="/pdf-to-word">PDF to Word</a><a href="/compare-pdf">Compare PDF</a><a href="/repair-pdf">Repair PDF</a><a href="/pdf-to-markdown">PDF to Markdown</a><a href="/extract-pdf-pages">Extract PDF Pages</a><a href="/word-to-pdf">Word to PDF</a><a href="/excel-to-pdf">Excel to PDF</a><a href="/pdf-to-excel">PDF to Excel</a><a href="/create-fillable-pdf">Create Fillable PDF</a><a href="/combine-files-to-pdf">Combine Files to PDF</a><a href="/compress-image">Compress Image</a><a href="/grayscale-pdf">Grayscale PDF</a><a href="/flatten-pdf">Flatten PDF</a><a href="/text-to-pdf">Text to PDF</a></p>
+</div></section>
+
+<footer>&copy; <span id="yr">2026</span> JanjuaPDF &middot; Free PDF tools<br><a href="/about" style="color:inherit">About</a> &middot; <a href="/privacy" style="color:inherit">Privacy Policy</a> &middot; <a href="/terms" style="color:inherit">Terms</a> &middot; <a href="/contact" style="color:inherit">Contact</a> &middot; <a href="/guides" style="color:inherit">Guides</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const $=id=>document.getElementById(id);
+let outUrl=null,busy=false,logoData=null;
+const KEY='jp_invoice_v1',DEC3=['KWD','OMR','BHD'],MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const RTL=/[֐-ࣿיִ-﷿ﹰ-﻿]/,LTR=/[A-Za-zÀ-ɏͰ-ϿЀ-ӿऀ-ॿ]/;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function human(b){return b>=1048576?(b/1048576).toFixed(2)+' MB':Math.max(1,Math.round(b/1024))+' KB';}
+function setStatus(m,c){$('st').textContent=m;$('st').className='status'+(c?' '+c:'');}
+function clearOut(){if(outUrl){URL.revokeObjectURL(outUrl);outUrl=null;}$('res').innerHTML='';}
+function cur(){return $('cur').value==='other'?($('curOther').value.trim().toUpperCase().slice(0,5)||''):$('cur').value;}
+function decs(){return DEC3.includes(cur())?3:2;}
+function rnd(n){const f=Math.pow(10,decs());return Math.round((n+Number.EPSILON)*f)/f;}
+function fmt(n){const d=decs();return n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function money(n){const c=cur();return (c?c+' ':'')+fmt(n);}
+function num(v){const n=parseFloat(String(v).replace(/,/g,''));return isFinite(n)?n:NaN;}
+function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function niceDate(v){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');return m?(+m[3])+' '+MON[+m[2]-1]+' '+m[1]:'';}
+function nextNum(s){const m=/^(.*?)(\d+)$/.exec(s||'');if(!m)return s||'INV-0001';const n=String(+m[2]+1);return m[1]+(n.length<m[2].length?n.padStart(m[2].length,'0'):n);}
+
+// ---- items
+function addRow(d='',q='1',p=''){
+  const r=document.createElement('div');r.className='iv-row';
+  r.innerHTML='<input class="d" type="text" maxlength="300" dir="auto" placeholder="Item or service" aria-label="Description"><input class="q" type="number" min="0" step="any" inputmode="decimal" placeholder="Qty" aria-label="Quantity"><input class="p" type="number" min="0" step="any" inputmode="decimal" placeholder="Price" aria-label="Price"><span class="amt">0</span><button type="button" aria-label="Remove item">&times;</button>';
+  r.querySelector('.d').value=d;r.querySelector('.q').value=q;r.querySelector('.p').value=p;
+  $('items').appendChild(r);calc();return r;
+}
+$('items').addEventListener('input',()=>{clearOut();calc();});
+$('items').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b||busy)return;
+  b.parentNode.remove();if(!$('items').children.length)addRow();clearOut();calc();
+});
+$('addItem').onclick=()=>{if(busy)return;addRow().querySelector('.d').focus();};
+function readItems(){
+  return [...$('items').children].map(r=>({d:r.querySelector('.d').value.trim(),q:num(r.querySelector('.q').value),p:num(r.querySelector('.p').value),qs:r.querySelector('.q').value.trim(),ps:r.querySelector('.p').value.trim(),el:r}));
+}
+function calc(){
+  const items=readItems();let sub=0;
+  items.forEach(it=>{const a=(isNaN(it.q)||isNaN(it.p))?0:rnd(it.q*it.p);it.el.querySelector('.amt').textContent=fmt(a);sub+=a;});
+  sub=rnd(sub);
+  const rate=num($('taxRate').value)||0,disc=Math.min(Math.max(rnd(num($('disc').value)||0),0),sub);
+  const tax=rnd((sub-disc)*rate/100),tot=rnd(sub-disc+tax);
+  let h='<table><tr><td>Subtotal</td><td>'+esc(money(sub))+'</td></tr>';
+  if(disc>0)h+='<tr><td>Discount</td><td>-'+esc(money(disc))+'</td></tr>';
+  if(rate>0)h+='<tr><td>Tax ('+esc(String(rate))+'%)</td><td>'+esc(money(tax))+'</td></tr>';
+  h+='<tr class="t"><td>Total</td><td>'+esc(money(tot))+'</td></tr></table>';
+  $('totals').innerHTML=h;
+  return {items,sub,disc,rate,tax,tot};
+}
+['cur','curOther','taxRate','disc'].forEach(id=>$(id).addEventListener('input',()=>{clearOut();calc();}));
+$('cur').addEventListener('change',()=>{$('curOtherBox').classList.toggle('hide',$('cur').value!=='other');clearOut();calc();});
+document.querySelectorAll('#fromName,#fromInfo,#fromTax,#toName,#toInfo,#title,#num,#date,#due,#notes').forEach(el=>el.addEventListener('input',clearOut));
+
+// ---- logo
+function setLogo(data,name){logoData=data;$('logoName').textContent=data?(name||'Logo added'):'No logo';$('logoRm').classList.toggle('hide',!data);}
+$('logo').onchange=async e=>{
+  const f=e.target.files[0];e.target.value='';if(!f)return;clearOut();
+  try{
+    const u=URL.createObjectURL(f),im=new Image();
+    await new Promise((ok,bad)=>{im.onload=ok;im.onerror=bad;im.src=u;});URL.revokeObjectURL(u);
+    const s=Math.min(1,600/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');
+    c.width=Math.max(1,Math.round(im.naturalWidth*s));c.height=Math.max(1,Math.round(im.naturalHeight*s));
+    c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+    setLogo(c.toDataURL('image/png'),f.name);setStatus('');
+  }catch(err){setLogo(null);setStatus('This logo could not be opened. Please use a PNG or JPG image.','err');}
+};
+$('logoRm').onclick=()=>{setLogo(null);clearOut();};
+
+// ---- remember on this device
+const SAVE=['fromName','fromInfo','fromTax','cur','curOther','taxRate','notes','title'];
+function save(lastNum){
+  try{
+    if(!$('remember').checked){localStorage.removeItem(KEY);return;}
+    const o={};SAVE.forEach(k=>o[k]=$(k).value);o.lastNum=lastNum||'';
+    if(logoData&&logoData.length<300000)o.logo=logoData;
+    localStorage.setItem(KEY,JSON.stringify(o));
+  }catch(e){}
+}
+function load(){
+  try{
+    const o=JSON.parse(localStorage.getItem(KEY)||'null');if(!o)return;
+    SAVE.forEach(k=>{if(typeof o[k]==='string')$(k).value=o[k];});
+    if(!$('cur').value)$('cur').value='AED';
+    $('curOtherBox').classList.toggle('hide',$('cur').value!=='other');
+    if(o.lastNum)$('num').value=nextNum(o.lastNum);
+    if(o.logo)setLogo(o.logo,'Saved logo');
+  }catch(e){}
+}
+$('remember').onchange=()=>{if(!$('remember').checked){try{localStorage.removeItem(KEY);}catch(e){}}};
+
+$('clr').onclick=()=>{
+  if(busy)return;
+  ['toName','toInfo','due'].forEach(k=>$(k).value='');
+  $('items').innerHTML='';addRow();$('disc').value='0';$('date').value=today();
+  if(!$('remember').checked){['fromName','fromInfo','fromTax','notes','curOther'].forEach(k=>$(k).value='');$('taxRate').value='0';setLogo(null);}
+  clearOut();setStatus('');calc();
+};
+
+// ---- drawing (one layout, two outputs: real PDF text or images for Urdu/Arabic)
+function isRtl(s){for(const ch of s){if(RTL.test(ch))return true;if(LTR.test(ch))return false;}return false;}
+function wrap(text,maxW,w){
+  const out=[];
+  for(const p of String(text).split('\n')){
+    if(!p.trim()){out.push('');continue;}
+    let line='';
+    const long=tok=>{let c='';for(const ch of Array.from(tok)){if(c&&w(c+ch)>maxW){out.push(c);c=ch;}else c+=ch;}return c;};
+    for(const tok of p.split(/(\s+)/)){
+      if(!tok)continue;
+      if(w(line+tok)<=maxW){line+=tok;continue;}
+      if(/^\s+$/.test(tok)){out.push(line.trim());line='';continue;}
+      if(line.trim())out.push(line.trim());
+      line=w(tok)>maxW?long(tok):tok;
+    }
+    out.push(line.trim());
+  }
+  while(out.length&&out[out.length-1]==='')out.pop();
+  return out;
+}
+const W=595.28,H=841.89,M=40,S=2,INK=[0.114,0.141,0.2],GRAY=[0.4,0.44,0.52],LINE=[0.89,0.9,0.93];
+function painter(doc,fonts,image){
+  let page=null,cv=null,cx=null;const shots=[];
+  const css=c=>'rgb('+c.map(v=>Math.round(v*255)).join(',')+')';
+  const cfont=(size,bold)=>(bold?'bold ':'')+(size*S)+'px Arial, Helvetica, "Segoe UI", Tahoma, sans-serif';
+  async function flush(){if(cv){shots.push(await new Promise(r=>cv.toBlob(r,'image/png')));cv.width=cv.height=0;cv=null;}}
+  return {
+    async newPage(){
+      if(image){await flush();cv=document.createElement('canvas');cv.width=Math.round(W*S);cv.height=Math.round(H*S);cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);}
+      else page=doc.addPage([W,H]);
+    },
+    width(s,size,bold){
+      if(image){cx.font=cfont(size,bold);return cx.measureText(s).width/S;}
+      return (bold?fonts.b:fonts.r).widthOfTextAtSize(s,size);
+    },
+    text(s,x,y,o){
+      if(!s)return;const size=o.size||10,bold=!!o.bold,col=o.color||INK,al=o.align||'left';
+      if(image){
+        cx.font=cfont(size,bold);cx.fillStyle=css(col);const r=isRtl(s);cv.dir=r?'rtl':'ltr';cx.direction=r?'rtl':'ltr';cx.textAlign=al;cx.textBaseline='alphabetic';
+        cx.fillText(s,x*S,y*S);
+      }else{
+        const f=bold?fonts.b:fonts.r,w=f.widthOfTextAtSize(s,size);
+        const xx=al==='right'?x-w:al==='center'?x-w/2:x;
+        page.drawText(s,{x:xx,y:H-y,size,font:f,color:PDFLib.rgb(...col)});
+      }
+    },
+    rect(x,y,w,h,col){
+      if(image){cx.fillStyle=css(col);cx.fillRect(x*S,y*S,w*S,h*S);}
+      else page.drawRectangle({x,y:H-y-h,width:w,height:h,color:PDFLib.rgb(...col)});
+    },
+    line(x1,y,x2,col,th){
+      if(image){cx.fillStyle=css(col);cx.fillRect(x1*S,(y-th/2)*S,(x2-x1)*S,th*S);}
+      else page.drawLine({start:{x:x1,y:H-y},end:{x:x2,y:H-y},thickness:th,color:PDFLib.rgb(...col)});
+    },
+    async img(data,x,y,w,h){
+      if(image){const im=new Image();await new Promise((ok,bad)=>{im.onload=ok;im.onerror=bad;im.src=data;});cx.drawImage(im,x*S,y*S,w*S,h*S);}
+      else{const e=await doc.embedPng(data);page.drawImage(e,{x,y:H-y-h,width:w,height:h});}
+    },
+    async finish(){
+      if(!image)return;await flush();
+      for(const b of shots){if(!b)throw new Error('Your browser ran out of memory while drawing the invoice.');const e=await doc.embedPng(new Uint8Array(await b.arrayBuffer()));doc.addPage([W,H]).drawImage(e,{x:0,y:0,width:W,height:H});}
+    }
+  };
+}
+async function buildPdf(d){
+  const doc=await PDFLib.PDFDocument.create();
+  doc.setTitle(d.title+' '+d.num);doc.setCreator('JanjuaPDF Invoice Maker');doc.setProducer('JanjuaPDF');
+  const fonts={r:await doc.embedFont(PDFLib.StandardFonts.Helvetica),b:await doc.embedFont(PDFLib.StandardFonts.HelveticaBold)};
+  const okSet=new Set(fonts.r.getCharacterSet());
+  const all=[d.fromName,d.fromInfo,d.fromTax,d.toName,d.toInfo,d.title,d.num,d.notes,d.cur,...d.items.map(i=>i.d)].join('');
+  const image=!Array.from(all).every(ch=>ch==='\n'||okSet.has(ch.codePointAt(0)));
+  const P=painter(doc,fonts,image);
+  const R=W-M,CW=W-2*M;
+  let logoH=0,y=M;
+  await P.newPage();
+  // header left
+  if(d.logo){
+    const im=new Image();await new Promise((ok,bad)=>{im.onload=ok;im.onerror=bad;im.src=d.logo;});
+    const k=Math.min(150/im.naturalWidth,60/im.naturalHeight,1);const lw=im.naturalWidth*k,lh=im.naturalHeight*k;
+    await P.img(d.logo,M,y,lw,lh);logoH=lh+14;
+  }
+  let yl=y+logoH;
+  const leftW=CW*0.55;
+  for(const l of wrap(d.fromName,leftW,s=>P.width(s,15,true))){yl+=17;P.text(l,M,yl,{size:15,bold:true});}
+  const fromLines=wrap(d.fromInfo,leftW,s=>P.width(s,9.5));
+  if(d.fromTax)fromLines.push(...wrap('Tax No: '+d.fromTax,leftW,s=>P.width(s,9.5)));
+  yl+=4;for(const l of fromLines){yl+=13;P.text(l,M,yl,{size:9.5,color:GRAY});}
+  // header right
+  let yr=y+24;P.text(d.title,R,yr,{size:24,bold:true,align:'right'});
+  yr+=10;
+  const meta=[['Number',d.num],['Date',niceDate(d.date)]];if(d.due)meta.push(['Due date',niceDate(d.due)]);
+  const valW=150;
+  for(const [k,v] of meta){
+    if(!v)continue;
+    const vl=wrap(v,valW,s=>P.width(s,10,true));
+    yr+=15;P.text(k,R-valW-10,yr,{size:9.5,color:GRAY,align:'right'});
+    vl.forEach((l,i)=>{if(i)yr+=13;P.text(l,R,yr,{size:10,bold:true,align:'right'});});
+  }
+  y=Math.max(yl,yr)+26;
+  // bill to
+  P.text(d.title==='QUOTATION'?'PREPARED FOR':'BILL TO',M,y,{size:9,bold:true,color:GRAY});
+  for(const l of wrap(d.toName,CW,s=>P.width(s,11.5,true))){y+=15;P.text(l,M,y,{size:11.5,bold:true});}
+  for(const l of wrap(d.toInfo,CW,s=>P.width(s,9.5))){y+=13;P.text(l,M,y,{size:9.5,color:GRAY});}
+  y+=22;
+  // table
+  const aR=R-8,pR=aR-110,qR=pR-100,dX=M+8,dW=qR-60-dX;
+  const head=()=>{P.rect(M,y,CW,22,INK);const b=y+14.5,o={size:9,bold:true,color:[1,1,1]};P.text('DESCRIPTION',dX,b,o);P.text('QTY',qR,b,{...o,align:'right'});P.text('PRICE',pR,b,{...o,align:'right'});P.text('AMOUNT',aR,b,{...o,align:'right'});y+=22;};
+  const bottom=H-M-10;
+  head();
+  const fresh=Math.floor((bottom-M-22-10)/13);
+  for(const it of d.items){
+    const lines=wrap(it.d||'-',dW,s=>P.width(s,10));let first=true;
+    while(lines.length){
+      const room=Math.floor((bottom-y-10)/13);
+      if(room<1||(lines.length<=fresh&&y+lines.length*13+10>bottom)){await P.newPage();y=M;head();continue;}
+      const part=lines.splice(0,Math.min(room,lines.length));
+      part.forEach((l,j)=>P.text(l,dX,y+16+j*13,{size:10}));
+      if(first){P.text(fmtQty(it.q),qR,y+16,{size:10,align:'right'});P.text(fmtPrice(it.p),pR,y+16,{size:10,align:'right'});P.text(fmt(it.a),aR,y+16,{size:10,align:'right'});first=false;}
+      y+=part.length*13+10;
+      if(!lines.length)P.line(M,y,R,LINE,0.8);
+    }
+  }
+  // totals
+  const rows=[['Subtotal',money(d.sub)]];
+  if(d.disc>0)rows.push(['Discount','-'+money(d.disc)]);
+  if(d.rate>0)rows.push(['Tax ('+d.rate+'%)',money(d.tax)]);
+  const totH=rows.length*18+40;
+  if(y+12+totH>bottom){await P.newPage();y=M;}
+  y+=12;const tL=R-230;
+  for(const [k,v] of rows){y+=18;P.text(k,tL,y,{size:10,color:GRAY});P.text(v,aR,y,{size:10,align:'right'});}
+  y+=10;P.rect(tL-8,y,R-tL+8,28,[0.95,0.96,0.98]);P.line(tL-8,y,R,INK,1.2);
+  P.text('TOTAL',tL,y+18.5,{size:11,bold:true});P.text(money(d.tot),aR,y+18.5,{size:12,bold:true,align:'right'});
+  y+=28+26;
+  // notes
+  if(d.notes){
+    const nl=wrap(d.notes,CW,s=>P.width(s,9.5));
+    if(y+28>bottom){await P.newPage();y=M;}
+    P.text('NOTES',M,y,{size:9,bold:true,color:GRAY});
+    for(const l of nl){if(y+13>bottom){await P.newPage();y=M;}y+=13;P.text(l,M,y,{size:9.5});}
+  }
+  await P.finish();
+  return {bytes:await doc.save({useObjectStreams:true}),image,pages:doc.getPageCount()};
+}
+function fmtPrice(p){const d=decs();return p.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:Math.max(d,4)});}
+function fmtQty(q){return Number.isInteger(q)?String(q):q.toLocaleString('en-US',{maximumFractionDigits:3});}
+
+$('go').onclick=async()=>{
+  if(busy)return;clearOut();
+  const c=calc();
+  const items=c.items.filter(it=>it.d||it.qs||it.ps);
+  const errs=[];
+  if(!$('fromName').value.trim())errs.push('add your business or your name');
+  if(!items.length)errs.push('add at least one item');
+  items.forEach((it,i)=>{
+    if(!it.d)errs.push('write a description for item '+(i+1));
+    if(isNaN(it.q)||it.q<0)errs.push('enter a correct quantity for item '+(i+1));
+    if(isNaN(it.p)||it.p<0)errs.push('enter a correct price for item '+(i+1));
+  });
+  const rate=num($('taxRate').value);if($('taxRate').value.trim()&&(isNaN(rate)||rate<0||rate>100))errs.push('enter a tax rate between 0 and 100');
+  const disc=num($('disc').value);if($('disc').value.trim()&&(isNaN(disc)||disc<0))errs.push('enter a correct discount');
+  else if(disc>0&&disc>c.sub)errs.push('make the discount smaller than the subtotal');
+  if($('cur').value==='other'&&!cur())errs.push('type a currency code');
+  if(errs.length){setStatus('Please '+errs.slice(0,3).join(', ')+'.','err');return;}
+  if(!window.PDFLib){setStatus('Error: the PDF engine could not load. Check your internet connection and refresh the page.','err');return;}
+  busy=true;$('go').disabled=true;setStatus('Working... please wait.');
+  try{
+    const d={fromName:$('fromName').value.trim(),fromInfo:$('fromInfo').value.trim(),fromTax:$('fromTax').value.trim(),toName:$('toName').value.trim(),toInfo:$('toInfo').value.trim(),
+      title:$('title').value,num:$('num').value.trim(),date:$('date').value,due:$('due').value,notes:$('notes').value.trim(),cur:cur(),logo:logoData,
+      items:items.map(it=>({d:it.d,q:it.q,p:it.p,a:rnd(it.q*it.p)})),sub:c.sub,disc:c.disc,rate:c.rate,tax:c.tax,tot:c.tot};
+    const r=await buildPdf(d);
+    outUrl=URL.createObjectURL(new Blob([r.bytes],{type:'application/pdf'}));
+    const fname=(d.title==='QUOTATION'?'quotation':'invoice')+'-'+((d.num||'').replace(/[^\w\-]+/g,'-').replace(/^-+|-+$/g,'')||'1')+'.pdf';
+    $('res').innerHTML='<p><b>Total:</b> '+esc(money(d.tot))+' &middot; <b>Pages:</b> '+r.pages+' &middot; <b>Size:</b> '+human(r.bytes.byteLength)+'</p>'+
+      (r.image?'<p style="font-size:13px">Your invoice has Urdu, Arabic or other special letters, so it was drawn as an image to keep the letters correct.</p>':'')+
+      '<a class="btn" id="dl" style="text-decoration:none" href="'+outUrl+'" download="'+esc(fname)+'">&#11015; Download '+esc(fname)+'</a>';
+    save(d.num);
+    setStatus('Done! Your PDF is ready below. Please check it before you send it.','ok');
+  }catch(e){setStatus('Error: '+(e&&e.message?e.message:String(e)),'err');}
+  finally{busy=false;$('go').disabled=false;}
+};
+$('date').value=today();
+load();
+addRow();
+calc();
+</script>
+</body>
+</html>
