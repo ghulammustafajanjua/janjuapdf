@@ -325,7 +325,9 @@ async rotate(){
 },
 async img2pdf(){
   const hi=opt('q')==='high',baseSide=hi?3200:2000,baseQ=hi?0.92:0.85,a4=opt('size')==='a4';
-  const target=opt('max')==='none'?0:(+opt('max'))*1024;
+  const lim=opt('max')==='none'?0:+opt('max');
+  // 1 KB = 1000 bytes and 1 MB = 1,000,000 bytes, so the file passes on every website
+  const target=!lim?0:lim>=1024?lim/1024*1000000:lim*1000,limTxt=!lim?'':lim>=1024?(lim/1024)+' MB':lim+' KB';
   const kb=n=>n>=1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB';
   const ims=[];
   try{
@@ -371,10 +373,10 @@ async img2pdf(){
   }
   let note;
   if(out){
-    note='Target reached: under '+kb(target)+'.'+(lastI>=7?' Please check that small text is still easy to read.':'');
+    note='Target reached: under '+limTxt+'.'+(lastI>=7?' Please check that small text is still easy to read.':'');
   }else{
     out=await make(S[S.length-1][0],S[S.length-1][1],'Final: ');
-    note='We could not get '+(n>1?'these '+n+' images':'this image')+' under '+kb(target)+'. This is the smallest version we can make while keeping it readable.'+(n>1?' Try fewer images per PDF, or a bigger size limit.':' Try a bigger size limit.');
+    note='We could not get '+(n>1?'these '+n+' images':'this image')+' under '+limTxt+'. This is the smallest version we can make while keeping it readable.'+(n>1?' Try fewer images per PDF, or a bigger size limit.':' Try a bigger size limit.');
   }
   const a=dl(out,'images.pdf',PDF);
   const p=document.createElement('p');p.innerHTML='<b>PDF size:</b> '+kb(out.byteLength)+'<br>'+note;

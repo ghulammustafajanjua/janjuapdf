@@ -394,8 +394,10 @@ async numbers(){
 async compress(){
   const f=files[0];const bytes=await buf(f);const before=bytes.byteLength;
   const kb=n=>n>=1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB';
-  const target=opt('target')==='none'?0:(+opt('target'))*1024;
-  if(target&&before<=target)throw new Error('Good news: your PDF is already '+kb(before)+', which is under '+kb(target)+'. You can upload it as it is.');
+  const lim=opt('target')==='none'?0:+opt('target');
+  // 1 KB = 1000 bytes and 1 MB = 1,000,000 bytes, so the file passes on every website
+  const target=!lim?0:lim>=1024?lim/1024*1000000:lim*1000,limTxt=!lim?'':lim>=1024?(lim/1024)+' MB':lim+' KB';
+  if(target&&before<=target)throw new Error('Good news: your PDF is already '+kb(before)+', which is under '+limTxt+'. You can upload it as it is.');
   let out,note='';
   if(!target&&opt('mode')==='light'){
     const doc=await PDFDocument.load(bytes);
@@ -432,13 +434,13 @@ async compress(){
         last=first;
         for(let i=3;i<S.length;i++){tries++;const r=await make(S[i][0],S[i][1],`Try ${tries}: `);last=r;if(r.byteLength<=target){best=r;bestI=i;break;}}
       }
-      if(best){out=best;note='Target reached: under '+kb(target)+'.'+(bestI>=5?' Please check that small text is still easy to read.':'');}
-      else{out=last;note='We could not get this file under '+kb(target)+'. This is the smallest version we can make while keeping it readable. To go smaller, remove pages you do not need with Delete PDF Pages, or split the file into parts.';}
+      if(best){out=best;note='Target reached: under '+limTxt+'.'+(bestI>=5?' Please check that small text is still easy to read.':'');}
+      else{out=last;note='We could not get this file under '+limTxt+'. This is the smallest version we can make while keeping it readable. To go smaller, remove pages you do not need with Delete PDF Pages, or split the file into parts.';}
     }
   }
   if(out.byteLength>=before*0.97)throw new Error('This PDF is already small ('+kb(before)+'). We could not make it smaller. Try the other method.');
   const a=dl(out,baseName(f)+'-compressed.pdf',PDF);
-  const p=document.createElement('p');p.innerHTML='<b>Before:</b> '+kb(before)+' &rarr; <b>After:</b> '+kb(out.byteLength)+' (saved '+Math.round((1-out.byteLength/before)*100)+'%)'+(note?'<br>'+note:'');
+  const p=document.createElement('p');p.innerHTML='<b>Before:</b> '+kb(before)+' &rarr; <b>After:</b> '+kb(out.byteLength)+' (saved '+Math.floor((1-out.byteLength/before)*100)+'%)'+(note?'<br>'+note:'');
   $('res').insertBefore(p,a);
 },
 async delpages(){
